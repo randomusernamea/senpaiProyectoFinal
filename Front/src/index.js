@@ -11,7 +11,7 @@ import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Pokedex />,
   },
   {
     path: "pokedex",
