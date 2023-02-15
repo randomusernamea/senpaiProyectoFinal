@@ -1,0 +1,15 @@
+#ErrorComp{
+    background-color:rgb(116,166,188);
+    height:100vh;
+}
+
+#ErrorPikachuGif{
+    position: absolute;
+    bottom:0px;
+}
+
+#ErrorText{
+    text-align: center;
+    color:red;
+
+}

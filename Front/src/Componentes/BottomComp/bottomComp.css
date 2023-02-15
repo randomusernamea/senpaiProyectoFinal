@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, 140px);
+    width: 390px;
+
+
+}
+.bodyBottomComp{
+    height: 100%;
+}
+
+.bottomCompP {
+    text-align: right;
+    
+}
+
+.bottomCompImg {
+    display: block;
+    margin:auto ;
+    object-fit: contain;
+    width:64px ;
+    
+}
+
+.bottomCompDiv {
+    background-color: white;
+    width: 100px;
+    margin: 10px;
+    border: solid 2px;
+    border-radius:15px;
+}
+
+.bottomCompNombres {
+    width: 104%;
+    border-radius: 0px 0px 15px 15px;
+    position: relative;
+    right: 2px;
+    top: 2px;
+    text-align: center;
+       background-color: black;
+       color: white;
+}
+
+
+.btnCointainerBottomComp{
+    overflow: hidden;
+    bottom: 20px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+}
+
+.btnBottomComp {
+    height: 40px;
+    margin-top: 10px;
+    background-color: rgb(240, 110, 110);
+    overflow: hidden;
+    color: #fff;
+    box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 2255, 0.5);
+    transition: transform 0.3 ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 50%;
+    border-radius: 10px;
+    border: none;
+}
+
+.btnBottomComp::after{
+    
+    content: "";
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    background-color: #ff3cac;
+    background-image: linear-gradient(
+        225deg,
+     #ea7b7b 0%,
+     #ddd8d8 50%,
+     #060107 100% 
+     );
+     z-index: -1;
+     transition: transform 0.5s ease;
+}
+
+
+.btnBottomComp:hover{
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 rgba(172, 135, 221, 0.5),
+    -10px 10px 25px 0 rgba(67, 110, 125, 0.5);
+}
+
+.btnBottomComp:hover::after{
+       transform: rotate(150deg);
+}
+
+
+
+
