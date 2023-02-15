@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import BigCard from "./Componentes/BigCard/bigCard";
 import Pokedex from "./Componentes/Pokedex/pokedex";
 import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
+import Home from "./Componentes/HomePage/Home"
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: "*",
     element: <ErrorComp/>,
   },
+  {
+    path: "login",
+    element: <Home/>,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
