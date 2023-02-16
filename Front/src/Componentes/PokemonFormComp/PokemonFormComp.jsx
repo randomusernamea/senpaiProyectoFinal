@@ -1,9 +1,9 @@
-import "./AgregarComp.css";
+import "./PokemonFormComp.css";
 
 import { useState } from "react";
 
 
-function AgregarComp(params) {
+function PokemonFormComp(params) {
     const [id, setId] = useState("")
     const [nombre, setNombre] = useState("")
     const [img, setImg] = useState("")
@@ -83,13 +83,13 @@ function AgregarComp(params) {
             }
         }
         if (params.tarea === "agregar"){
-            setTexto("Creando Pokemon...")
+            setTexto("Creando Pokemon...") //todo
             // registrarPokemon(Pokemon).then((response) => {
 
         //})
         }
         else {
-            setTexto("Editando Pokemon...")
+            setTexto("Editando Pokemon...") //todo
             // editarPokemon(Pokemon).then((response) => {
 
         //})
@@ -135,4 +135,4 @@ function AgregarComp(params) {
     )
 }
 
-export default AgregarComp;
+export default PokemonFormComp;

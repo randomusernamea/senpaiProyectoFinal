@@ -8,7 +8,7 @@ import BigCard from "./Componentes/BigCard/bigCard";
 import Pokedex from "./Componentes/Pokedex/pokedex";
 import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
 import Home from "./Componentes/HomePage/Home"
-import AgregarComp from "./Componentes/AgregarComp/AgregarComp"
+import PokemonFormComp from "./Componentes/PokemonFormComp/PokemonFormComp"
 
 const router = createBrowserRouter([
   {
@@ -33,11 +33,11 @@ const router = createBrowserRouter([
   },
   {
     path: "agregar",
-    element: <AgregarComp tarea="agregar"/>
+    element: <PokemonFormComp tarea="agregar"/>
   },
   {
     path: "editar",
-    element: <AgregarComp tarea="editar"/>
+    element: <PokemonFormComp tarea="editar"/>
   }
 ]);
 
