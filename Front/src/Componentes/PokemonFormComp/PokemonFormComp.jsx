@@ -128,7 +128,7 @@ function PokemonFormComp(params) {
             <label for="spd">spd:</label>
             <input type="text" id="spd" name="spd" onChange = {onChangeValueSpd} value = {spd}/><br/>
             <button id="crearBtn" type="submit">
-                    Crear Pokemon
+                    Enviar datos
                 </button>
                 <p>{texto}</p>
         </form>
