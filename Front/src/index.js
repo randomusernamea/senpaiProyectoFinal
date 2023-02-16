@@ -8,6 +8,7 @@ import BigCard from "./Componentes/BigCard/bigCard";
 import Pokedex from "./Componentes/Pokedex/pokedex";
 import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
 import Login from "./Componentes/Login/Login"
+import Registrar from "./Componentes/Register/Register"
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login/>,
+  },
+  {
+    path: "registrar", 
+    element: <Registrar/>,
   }
 ]);
 
