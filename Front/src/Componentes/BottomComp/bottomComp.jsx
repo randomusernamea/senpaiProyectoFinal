@@ -18,6 +18,14 @@ function BottomComp(props) {
             </Link>
           );
         })}
+        <Link to={`/Agregar`}>
+              <Card
+                tipo={"Normal"}
+                nombre={"Agregar"}
+                pokeid={"0"}
+                pokeimg={"/images/add.png"}
+              ></Card>
+            </Link>
       </div>
       <div className="btnCointainerBottomComp">
         <Link to={`/`}>
