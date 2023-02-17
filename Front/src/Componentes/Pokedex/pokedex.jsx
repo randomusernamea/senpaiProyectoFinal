@@ -3,6 +3,7 @@ import BottomComp from "../BottomComp/bottomComp";
 import "./pokedex.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getPokemones } from "../../API/rule_info";
 
 function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
@@ -11,33 +12,41 @@ function Pokedex() {
   const [search, setSearch] = useState("");
   const { idPokemons } = useParams;
 
-  const consultarPokemons = () => {
-    fetch("http://localhost:3000/pokemons", idPokemons, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-        setPokemons(data);
-        setPokemonsOrdered(data);
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  };
   useEffect(() => {
-    consultarPokemons();
+    getPokemones().then((data) => {
+      setPokemons(data);
+    });
   }, []);
+
+  // const consultarPokemons = () => {
+  //   fetch("http://localhost:3000/pokemons", idPokemons, {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       return Promise.reject(response);
+  //     })
+  //     .then((data) => {
+  //       setPokemons(data);
+  //       setPokemonsOrdered(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error.statusText);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   consultarPokemons();
+  // }, []);
+
   function changeSorting(param) {
     setSorting(param);
     let a = sortPokes(pokemonsOrdered, param);
     setPokemonsOrdered(a);
   }
-  function sortPokes(a, sortOrder){
+  function sortPokes(a, sortOrder) {
     a.sort((a, b) => {
       if (sortOrder === true) {
         if (a.nombre > b.nombre) {
@@ -71,6 +80,7 @@ function Pokedex() {
   }
   return (
     <div id="pokedex">
+      <h3>ESTAS EN POKEDEX</h3>
       <TopComp
         id="topComp"
         setOrderFilter={setPokemonsOrdered}

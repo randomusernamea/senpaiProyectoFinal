@@ -31,31 +31,23 @@ function BigCard() {
     descripcion: ".....",
   });
 
-  const [arrayPokemones, setArrayPokemones] = useState([]);
-
-  useEffect(() => {
-    getPokemones().then((data) => {
-      setArrayPokemones(data);
-    });
-  }, []);
-
-  // function consultarId(id) {
-  //   fetch("http://localhost:3000/pokemons/" + id, {
-  //     method: "GET",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //       return Promise.reject(response);
-  //     })
-  //     .then((data) => {
-  //       setPoke(data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.statusText);
-  //     });
-  // }
+  function consultarId(id) {
+    fetch("http://localhost:3000/pokemons/" + id, {
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      })
+      .then((data) => {
+        setPoke(data);
+      })
+      .catch((error) => {
+        alert(error.statusText);
+      });
+  }
 
   useEffect(() => {
     consultarId(idPokemons);
