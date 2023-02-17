@@ -300,6 +300,10 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
+      <Link
+            id="editar"
+            to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
+          >Editar</Link>
     </div>
   );
 }
