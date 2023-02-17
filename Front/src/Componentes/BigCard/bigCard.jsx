@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { eliminarPokemon } from "../../API/rule_eliminar";
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -49,6 +50,32 @@ function BigCard() {
       });
   }
 
+  function deletePokemon (){
+    eliminarPokemon(poke.id).then(function(response){
+      setPoke({
+        id: "003",
+        nombre: "MissingNo",
+        img: "/images/000.svg",
+        tipo1: "Normal",
+        tipo2: "",
+        weight: "10,0kg",
+        height: "1,0m",
+        ability1: "Error",
+        ability2: "",
+        stats: {
+          hp: "036",
+          atk: "136",
+          def: "000",
+          satk: "006",
+          sdef: "006",
+          spd: "029",
+        },
+    
+        descripcion: ".....",
+      })})
+    
+
+  }
   useEffect(() => {
     consultarId(idPokemons);
     console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
@@ -301,6 +328,8 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
+      <p onClick = {deletePokemon}>Eliminar pokemon</p>
+      </div>
       <Link
             id="editar"
             to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
