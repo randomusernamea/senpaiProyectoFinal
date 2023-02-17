@@ -1,6 +1,6 @@
 import API from "./rule_API";
 
-export const crearPokemon = (id) => {
+export const eliminarPokemon = (id) => {
   return API.delete("/pokemon/eliminar/" + id)
     .then((response) => {
       return response.data;

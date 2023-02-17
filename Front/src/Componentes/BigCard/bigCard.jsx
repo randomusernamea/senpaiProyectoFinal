@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { eliminarPokemon } from "../../API/rule_eliminar";
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -301,6 +302,7 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
+      <div onClick = {eliminarPokemon(poke.id)}><p>Eliminar pokemon</p></div>
     </div>
   );
 }
