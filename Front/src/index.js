@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "editar",
-    element: <PokemonFormComp tarea="editar"/>
+    element: <PokemonFormComp tarea="editar/:id:"/>
   }
 
 ]);

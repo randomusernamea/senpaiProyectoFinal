@@ -1,25 +1,28 @@
 import "./PokemonFormComp.css";
 
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import {crearPokemon} from "../../API/rule_crear"
 import {editarPokemon} from "../../API/rule_editar"
 
 
 function PokemonFormComp(params) {
-    const [id, setId] = useState("")
-    const [nombre, setNombre] = useState("")
-    const [img, setImg] = useState("")
-    const [tipo1, setTipo1] = useState("")
-    const [tipo2, setTipo2] = useState("")
-    const [weight, setWeight] = useState("")
-    const [height, setHeight] = useState("")
-    const [abilities, setAbilities] = useState("")
-    const [hp, setHp] = useState("")
-    const [atk, setAtk] = useState("")
-    const [def, setDef] = useState("")
-    const [satk, setSatk] = useState("")
-    const [sdef, setSdef] = useState("")
-    const [spd, setSpd] = useState("")
+
+    const queryParams = new URLSearchParams(window.location.search)
+    const [id, setId] = useState(queryParams.get("id") || "")
+    const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
+    const [img, setImg] = useState(queryParams.get("img") || "")
+    const [tipo1, setTipo1] = useState(queryParams.get("tipo1") || "")
+    const [tipo2, setTipo2] = useState(queryParams.get("tipo2") || "")
+    const [weight, setWeight] = useState(queryParams.get("weight") || "")
+    const [height, setHeight] = useState(queryParams.get("height") || "")
+    const [abilities, setAbilities] = useState(queryParams.get("abilities") || "")
+    const [hp, setHp] = useState(queryParams.get("hp") || "")
+    const [atk, setAtk] = useState(queryParams.get("atk") || "")
+    const [def, setDef] = useState(queryParams.get("def") || "")
+    const [satk, setSatk] = useState(queryParams.get("satk") || "")
+    const [sdef, setSdef] = useState(queryParams.get("sdef") || "")
+    const [spd, setSpd] = useState(queryParams.get("spd") || "")
     const [texto, setTexto] = useState("")
     
     const onChangeValueId = (e) => {
