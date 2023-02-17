@@ -35,6 +35,7 @@ const router = createBrowserRouter([
   {
     path: "registrar", 
     element: <Registrar/>,
+  },
   {
     path: "agregar",
     element: <PokemonFormComp tarea="agregar"/>
