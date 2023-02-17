@@ -2,6 +2,8 @@ import "./PokemonFormComp.css";
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import {crearPokemon} from "../../API/rule_crear"
+import {editarPokemon} from "../../API/rule_editar"
 
 
 function PokemonFormComp(params) {
@@ -87,15 +89,15 @@ function PokemonFormComp(params) {
         }
         if (params.tarea === "agregar"){
             setTexto("Creando Pokemon...") //todo
-            // registrarPokemon(Pokemon).then((response) => {
-
-        //})
+            crearPokemon(Pokemon).then((response) => {
+              setTexto("Pokemon creado exitosamente")
+        })
         }
         else {
             setTexto("Editando Pokemon...") //todo
-            // editarPokemon(Pokemon).then((response) => {
-
-        //})
+             editarPokemon(Pokemon).then((response) => {
+              setTexto("Pokemon editado exitosamente")
+        })
         }
         
     }

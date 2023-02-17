@@ -48,6 +48,7 @@ function BigCard() {
         alert(error.statusText);
       });
   }
+
   useEffect(() => {
     consultarId(idPokemons);
     console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
