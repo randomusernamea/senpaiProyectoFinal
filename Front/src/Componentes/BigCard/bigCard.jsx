@@ -50,6 +50,32 @@ function BigCard() {
       });
   }
 
+  function deletePokemon (){
+    eliminarPokemon(poke.id).then(function(response){
+      setPoke({
+        id: "003",
+        nombre: "MissingNo",
+        img: "/images/000.svg",
+        tipo1: "Normal",
+        tipo2: "",
+        weight: "10,0kg",
+        height: "1,0m",
+        ability1: "Error",
+        ability2: "",
+        stats: {
+          hp: "036",
+          atk: "136",
+          def: "000",
+          satk: "006",
+          sdef: "006",
+          spd: "029",
+        },
+    
+        descripcion: ".....",
+      })})
+    
+
+  }
   useEffect(() => {
     consultarId(idPokemons);
     console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
@@ -302,8 +328,9 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
-      <div onClick = {eliminarPokemon(poke.id)}><p>Eliminar pokemon</p></div>
-    </div>
+      <p onClick = {deletePokemon}>Eliminar pokemon</p>
+      </div>
+    
   );
 }
 
