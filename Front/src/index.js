@@ -6,12 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import BigCard from "./Componentes/BigCard/bigCard";
 import Pokedex from "./Componentes/Pokedex/pokedex";
-
-import ErrorComp from "./Componentes/ErrorComp/ErrorComp";
-import Home from "./Componentes/HomePage/Home";
-
+import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
+import Login from "./Componentes/Login/Login"
+import Registrar from "./Componentes/Register/Register"
 import PokemonFormComp from "./Componentes/PokemonFormComp/PokemonFormComp"
-
 
 const router = createBrowserRouter([
   {
@@ -32,7 +30,11 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <Home/>,
+    element: <Login/>,
+  },
+  {
+    path: "registrar", 
+    element: <Registrar/>,
   },
   {
     path: "agregar",
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
   },
   {
     path: "editar",
-    element: <PokemonFormComp tarea="editar"/>
+    element: <PokemonFormComp tarea="editar/:id:"/>
   }
 
 ]);
