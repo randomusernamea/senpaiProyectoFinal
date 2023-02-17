@@ -1,7 +1,7 @@
 import API from "./rule_API";
 
-export const crearPokemon = (form) => {
-  return API.post("/pokemon/nuevo", form)
+export const editarPokemon = (form) => {
+  return API.put("/pokemon/editar", form)
     .then((response) => {
       return response.data;
     })

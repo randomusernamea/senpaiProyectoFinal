@@ -2,6 +2,7 @@ import "./PokemonFormComp.css";
 
 import { useState } from "react";
 import {crearPokemon} from "../../API/rule_crear"
+import {editarPokemon} from "../../API/rule_editar"
 
 
 function PokemonFormComp(params) {
@@ -91,9 +92,9 @@ function PokemonFormComp(params) {
         }
         else {
             setTexto("Editando Pokemon...") //todo
-             //editarPokemon(Pokemon).then((response) => {
-
-        //})
+             editarPokemon(Pokemon).then((response) => {
+              setTexto("Pokemon editado exitosamente")
+        })
         }
         
     }
