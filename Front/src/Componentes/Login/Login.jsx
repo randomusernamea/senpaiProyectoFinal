@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registrarUsuario } from "../../API/rule_Registrar";
-import "./registrar.css";
+import { loguearUsuario } from "../../API/rule_Login";
+import "./login.css";
 
-function Registrar() {
+function Login() {
     const [usuario, setUsuario] = useState("");
-    const [nombre, setNombre] = useState("");
     const [clave, setClave] = useState("");
     let navigate = useNavigate();
     const onChangeValueUsuario = (e) => {
@@ -15,16 +14,13 @@ function Registrar() {
       const onChangeValueClave = (e) => {
         setClave(e.target.value);
       };
-      const onChangeValueNombre = (e) => {
-        setNombre(e.target.value);
-      };
-
 
       const onSubmitSesion = async (e) => {
         e.preventDefault()
-        const user = {nombre: nombre, correo: usuario, clave: clave, permisos: 1}
-        registrarUsuario(user).then((response) => {
-            navigate("/Login")
+        const user = {correo: usuario, clave: clave}
+        loguearUsuario(user).then((response) => {
+            localStorage.setItem("JSONToken", response.token)
+            navigate("/")
         })
     }
     return (
@@ -52,16 +48,6 @@ function Registrar() {
               placeholder="password"
             />
             <br />
-            <label htmlFor="Nombre">Nombre</label>
-            <br />
-            <input
-              type="text"
-              onChange={onChangeValueNombre}
-              value={nombre}
-              required
-              placeholder="Nombre"
-            />
-            <br />
             {/* <Link to={`pokedex`}> */}
             <button id="btn-neon" type="submit">
               Iniciar
@@ -75,4 +61,4 @@ function Registrar() {
 
 
 }
-export default Registrar;
+export default Login;
