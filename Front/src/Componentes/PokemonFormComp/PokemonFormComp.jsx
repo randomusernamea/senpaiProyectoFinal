@@ -23,6 +23,7 @@ function PokemonFormComp(params) {
     const [satk, setSatk] = useState(queryParams.get("satk") || "")
     const [sdef, setSdef] = useState(queryParams.get("sdef") || "")
     const [spd, setSpd] = useState(queryParams.get("spd") || "")
+    const [descripcion, setDescripcion] = useState(queryParams.get("descripcion") || "")
     const [texto, setTexto] = useState("")
     
     const onChangeValueId = (e) => {
@@ -67,6 +68,9 @@ function PokemonFormComp(params) {
       const onChangeValueSpd = (e) => {
         setSpd(e.target.value);
       };
+      const onChangeValueDescripcion = (e) => {
+        setDescripcion(e.target.value);
+      }
       const onSubmitPkmn = (e) => {
         e.preventDefault()
         const Pokemon = {
@@ -85,7 +89,8 @@ function PokemonFormComp(params) {
                 satk: satk,
                 sdef: sdef,
                 spd: spd,
-            }
+            },
+            descripcion: descripcion
         }
         if (params.tarea === "agregar"){
             setTexto("Creando Pokemon...") //todo
@@ -132,6 +137,8 @@ function PokemonFormComp(params) {
             <input type="text" id="sdef" name="sdef" onChange = {onChangeValueSdef} value = {sdef}/><br/>
             <label for="spd">spd:</label>
             <input type="text" id="spd" name="spd" onChange = {onChangeValueSpd} value = {spd}/><br/>
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" id="Descripcion" name="Descripcion" onChange = {onChangeValueDescripcion} value = {descripcion}/><br/>
             <button id="crearBtn" type="submit">
                     Enviar datos
                 </button>
