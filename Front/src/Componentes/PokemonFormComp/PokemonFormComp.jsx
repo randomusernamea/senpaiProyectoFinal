@@ -11,7 +11,7 @@ function PokemonFormComp(params) {
     const queryParams = new URLSearchParams(window.location.search)
     const [id, setId] = useState(queryParams.get("id") || "")
     const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
-    const [img, setImg] = useState(queryParams.get("img") || "")
+    const [img, setImg] = useState({ preview: '', data: '' })
     const [tipo1, setTipo1] = useState(queryParams.get("tipo1") || "")
     const [tipo2, setTipo2] = useState(queryParams.get("tipo2") || "")
     const [weight, setWeight] = useState(queryParams.get("weight") || "")
@@ -33,9 +33,13 @@ function PokemonFormComp(params) {
         setNombre(e.target.value);
       };
       const onChangeValueImg = (e) => {
-        setImg(e.target.value);
+        const image = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        setImg(image)
       };
-      const onChangeValueTipo1 = (e) => {
+      const onChangeValueTipo1 = (e) => {   
         setTipo1(e.target.value);
       };
       const onChangeValueTipo2 = (e) => {
@@ -73,6 +77,8 @@ function PokemonFormComp(params) {
       }
       const onSubmitPkmn = (e) => {
         e.preventDefault()
+        let formData = new FormData()
+        formData.append('Imagen', img.data)
         const Pokemon = {
             id: id,
             nombre: nombre,
@@ -114,7 +120,7 @@ function PokemonFormComp(params) {
             <label for="Nombre">Nombre:</label>
             <input type="text" id="Nombre" name="Nombre" onChange = {onChangeValueNombre} value = {nombre}/><br/>
             <label for="Imagen">Imagen:</label>
-            <input type="text" id="Imagen" name="Imagen" onChange = {onChangeValueImg} value = {img}/><br/>
+            <input type="file" id="Imagen" name="Imagen" onChange = {onChangeValueImg}/><br/>
             <label for="Tipo 1">Tipo 1:</label>
             <input type="text" id="Tipo 1" name="Tipo 1" onChange = {onChangeValueTipo1} value = {tipo1}/><br/>
             <label for="Tipo 2">Tipo 2:</label>
@@ -143,7 +149,12 @@ function PokemonFormComp(params) {
                     Enviar datos
                 </button>
                 <p>{texto}</p>
+                {img.preview && (
+              <img src={img.preview} width="100" height="100" alt="Imagen subida" />
+              )}
         </form>
+
+        
     )
 }
 
