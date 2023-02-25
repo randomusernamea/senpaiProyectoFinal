@@ -86,7 +86,7 @@ function PokemonFormComp(params) {
             tipo1: tipo1,
             tipo2: tipo2, 
             weight: weight,
-            height: height, 
+            height: height,   
             abilities: abilities,
             stats: {
                 hp: hp,
@@ -96,17 +96,20 @@ function PokemonFormComp(params) {
                 sdef: sdef,
                 spd: spd,
             },
-            descripcion: descripcion
+            descripcion: descripcion  
         }
+        formData.append("Pokemon", JSON.stringify(Pokemon))
         if (params.tarea === "agregar"){
-            setTexto("Creando Pokemon...") //todo
-            crearPokemon(Pokemon).then((response) => {
+            setTexto("Creando Pokemon...")
+            crearPokemon(formData).then((response) => {
+              //todo Manejar la respuesta
               setTexto("Pokemon creado exitosamente")
         })
         }
         else {
-            setTexto("Editando Pokemon...") //todo
-             editarPokemon(Pokemon).then((response) => {
+            setTexto("Editando Pokemon...")
+             editarPokemon(formData).then((response) => {
+              //todo Manejar la respuesta
               setTexto("Pokemon editado exitosamente")
         })
         }
