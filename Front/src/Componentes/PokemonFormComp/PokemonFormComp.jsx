@@ -8,6 +8,54 @@ import { editarPokemon } from "../../API/rule_editar"
 
 function PokemonFormComp(params) {
 
+
+
+      const onChangeValueImg = (e) => {
+        const image = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        setImg(image)
+      };
+      const onChangeValueTipo1 = (e) => {   
+        setTipo1(e.target.value);
+      };
+      const onChangeValueTipo2 = (e) => {
+        setTipo2(e.target.value);
+      };
+      const onChangeValueWeight = (e) => {
+        setWeight(e.target.value);
+      };
+      const onChangeValueHeight = (e) => {
+        setHeight(e.target.value);
+      };
+      const onChangeValueAbilities = (e) => {
+        setAbilities(e.target.value);
+      };
+      const onChangeValueHp = (e) => {
+        setHp(e.target.value);
+      };
+      const onChangeValueAtk = (e) => {
+        setAtk(e.target.value);
+      };
+      const onChangeValueDef = (e) => {
+        setDef(e.target.value);
+      };
+      const onChangeValueSatk = (e) => {
+        setSatk(e.target.value);
+      };
+      const onChangeValueSdef = (e) => {
+        setSdef(e.target.value);
+      };
+      const onChangeValueSpd = (e) => {
+        setSpd(e.target.value);
+      };
+      const onChangeValueDescripcion = (e) => {
+        setDescripcion(e.target.value);
+      }
+      
+        
+
   const queryParams = new URLSearchParams(window.location.search)
   const [id, setId] = useState(queryParams.get("id") || "")
   const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
@@ -33,7 +81,11 @@ function PokemonFormComp(params) {
     setNombre(e.target.value);
   };
   const onChangeValueImg = (e) => {
-    setImg(e.target.value);
+    const image = {
+       preview: URL.createObjectURL(e.target.files[0]),
+       data: e.target.files[0],
+    }
+    setImg(image)
   };
   const onChangeValueTipo1 = (e) => {
     setTipo1(e.target.value);
@@ -71,41 +123,45 @@ function PokemonFormComp(params) {
   const onChangeValueDescripcion = (e) => {
     setDescripcion(e.target.value);
   }
-  const onSubmitPkmn = (e) => {
-    e.preventDefault()
-    const Pokemon = {
-      id: id,
-      nombre: nombre,
-      img: img,
-      tipo1: tipo1,
-      tipo2: tipo2,
-      weight: weight,
-      height: height,
-      abilities: abilities,
-      stats: {
-        hp: hp,
-        atk: atk,
-        def: def,
-        satk: satk,
-        sdef: sdef,
-        spd: spd,
-      },
-      descripcion: descripcion
-    }
-    if (params.tarea === "agregar") {
-      setTexto("Creando Pokemon...") //todo
-      crearPokemon(Pokemon).then((response) => {
-        setTexto("Pokemon creado exitosamente")
-      })
-    }
-    else {
-      setTexto("Editando Pokemon...") //todo
-      editarPokemon(Pokemon).then((response) => {
-        setTexto("Pokemon editado exitosamente")
-      })
-    }
+ const onSubmitPkmn = (e) => {
+        e.preventDefault()
+        let formData = new FormData()
+        formData.append('Imagen', img.data)
+        const Pokemon = {
+            id: id,
+            nombre: nombre,
+            img: img,
+            tipo1: tipo1,
+            tipo2: tipo2, 
+            weight: weight,
+            height: height,   
+            abilities: abilities,
+            stats: {
+                hp: hp,
+                atk: atk,
+                def: def,
+                satk: satk,
+                sdef: sdef,
+                spd: spd,
+            },
+            descripcion: descripcion  
+        }
+        formData.append("Pokemon", JSON.stringify(Pokemon))
+        if (params.tarea === "agregar"){
+            setTexto("Creando Pokemon...")
+            crearPokemon(formData).then((response) => {
+              //todo Manejar la respuesta
+              setTexto("Pokemon creado exitosamente")
+        })
+        }
+        else {
+            setTexto("Editando Pokemon...")
+             editarPokemon(formData).then((response) => {
+              //todo Manejar la respuesta
+              setTexto("Pokemon editado exitosamente")
+        })
+        }
 
-  }
 
   return (
     <div class="register-page">
