@@ -1,8 +1,31 @@
 import "./bottomComp.css";
 import Card from "../Card/card";
-import { Link } from "react-router-dom";
+import { logout } from "../../API/rule_Login";
+import { Link, useNavigate } from "react-router-dom";
 
 function BottomComp(props) {
+
+  let navigate = useNavigate();
+
+  const onSubmitLogout = async (e) => {
+    e.preventDefault()
+    try {
+      logout(user).then(() => {
+        localStorage.setHeader('Authorization', `Bearer ${JSON.parse(localStorage.getItem("currentUser")).token}`);
+        localStorage.clear();
+        context.commit("setUser", {
+          token: null,
+          userId: null,
+        });
+        localStorage.setHeader('Authorization', null);
+        navigate("/")
+      })
+    } catch (e) {
+      const error = new Error("Something went wrong");
+      throw error;
+    }
+  }
+
   return (
     <div className="bodyBottomComp">
       <div className="cards">
@@ -19,18 +42,16 @@ function BottomComp(props) {
           );
         })}
         <Link to={`/Agregar`}>
-              <Card
-                tipo={"Normal"}
-                nombre={"Agregar"}
-                pokeid={"0"}
-                pokeimg={"/images/add.png"}
-              ></Card>
-            </Link>
+          <Card
+            tipo={"Normal"}
+            nombre={"Agregar"}
+            pokeid={"0"}
+            pokeimg={"/images/add.png"}
+          ></Card>
+        </Link>
       </div>
       <div className="btnCointainerBottomComp">
-        <Link to={`/`}>
-          <button className="btnBottomComp">Cerrar sesión</button>
-        </Link>
+        <button onClick={onSubmitLogout} className="btnBottomComp">Cerrar sesión</button>
       </div>
     </div>
   );
