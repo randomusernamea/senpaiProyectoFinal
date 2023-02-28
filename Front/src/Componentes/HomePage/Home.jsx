@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -9,23 +9,29 @@ function Home() {
   let navigate = useNavigate();
   let user = "";
 
-  const login = async () => {
-    await fetch("http://localhost:3000/users/" + usuario, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-        user = data;
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  };
+  useEffect(() => {
+    //loguearUsuario().then((data) => {
+    //  user = data;
+    //});
+  }, []);
+
+  // const login = async () => {
+  //   await fetch("http://localhost:3000/users/" + usuario, {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       return Promise.reject(response);
+  //     })
+  //     .then((data) => {
+  //       user = data;
+  //     })
+  //     .catch((error) => {
+  //       alert(error.statusText);
+  //     });
+  // };
 
   const onChangeValueUsuario = (e) => {
     setUsuario(e.target.value);
@@ -34,9 +40,10 @@ function Home() {
   const onChangeValuePassword = (e) => {
     setPassword(e.target.value);
   };
+
   const onSubmitSesion = async (e) => {
     e.preventDefault();
-    await login();
+    //await login();
     // Promise.resolve(user);
     let a = autenticacion();
     if (a == undefined) {
@@ -57,24 +64,6 @@ function Home() {
     }
     return undefined;
   };
-
-  /*function consultarId(email) {
-    fetch("http://localhost:3000/users/" + usuario, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  }*/
 
   return (
     <>

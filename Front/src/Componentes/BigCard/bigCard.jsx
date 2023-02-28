@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
+import {getPokemonById} from "../../API/rule_info"
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -32,26 +33,42 @@ function BigCard() {
     descripcion: ".....",
   });
 
-  function consultarId(id) {
-    fetch("http://localhost:3000/pokemons/" + id, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-        setPoke(data);
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  }
+  useEffect(() => {
+    getPokemonById(idPokemons).then((data) => {
+      setPoke(data);
+    });
+  }, []);
 
-  function deletePokemon (){
-    eliminarPokemon(poke.id).then(function(response){
+  // function consultarId(id) {
+  //   fetch("http://localhost:3000/pokemons/" + id, {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       return Promise.reject(response);
+  //     })
+  //     .then((data) => {
+  //       setPoke(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error.statusText);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   consultarId(idPokemons);
+  //   console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
+  //   //   setPoke(
+  //   //     poke.filter((pokes) => {
+  //   //       return pokes.id == idPokemons;
+  //   //     })
+  //   //   );
+  // }, []);
+
+  function deletePokemon() {
+    eliminarPokemon(poke.id).then(function (response) {
       setPoke({
         id: "003",
         nombre: "MissingNo",
@@ -70,21 +87,11 @@ function BigCard() {
           sdef: "006",
           spd: "029",
         },
-    
-        descripcion: ".....",
-      })})
-    
 
+        descripcion: ".....",
+      });
+    });
   }
-  useEffect(() => {
-    consultarId(idPokemons);
-    console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
-    //   setPoke(
-    //     poke.filter((pokes) => {
-    //       return pokes.id == idPokemons;
-    //     })
-    //   );
-  }, []);
 
   return (
     <div id="bigCardDiv" style={{ backgroundColor: tipoAcolor(poke.tipo1) }}>
@@ -97,7 +104,7 @@ function BigCard() {
         {getPrevious(poke.id) !== "000" && (
           <Link
             id="bigCardArrowLeft"
-            onClick={() => consultarId(getPrevious(poke.id))}
+            //onClick={() => consultarId(getPrevious(poke.id))}
             to={`/pokemons/${getPrevious(poke.id)}`}
           ></Link>
         )}
@@ -105,7 +112,7 @@ function BigCard() {
         {getNext(poke.id) !== "000" && (
           <Link
             id="bigCardArrowRight"
-            onClick={() => consultarId(getNext(poke.id))}
+            //onClick={() => consultarId(getNext(poke.id))}
             to={`/pokemons/${getNext(poke.id)}`}
           ></Link>
         )}
@@ -328,11 +335,15 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
-      <p onClick = {deletePokemon}>Eliminar pokemon</p>
-      <Link
-            id="editar"
-            to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
-          >Editar</Link>
+      <div className="group-buttons">
+        <button onClick={deletePokemon} class='glowing-btn' id="eliminar"><span class='glowing-txt'>EL<span class='faulty-letter'>I</span>MINAR</span></button>
+        <Link
+          id="editar"
+          to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
+        >
+          <button class='glowing-btn-2'><span class='glowing-txt-2'>ED<span class='faulty-letter'>I</span>TAR</span></button>
+        </Link>
+      </div>
     </div>
   );
 }
