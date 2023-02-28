@@ -3,7 +3,7 @@ import API from "./rule_API";
 export const loguearUsuario = async (form) => {
   return await API.post("/login", form)
     .then((response) => {
-      console.log(response)
+      console.log(response);
       return response.data;
     })
     .catch((error) => {

@@ -32,26 +32,46 @@ function BigCard() {
     descripcion: ".....",
   });
 
-  function consultarId(id) {
-    fetch("http://localhost:3000/pokemons/" + id, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-        setPoke(data);
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  }
+  useEffect(() => {
+    getPokemonById(idPokemons).then(() => {
+      setPoke(
+        poke.filter((pokes) => {
+          return pokes.id == idPokemons;
+        })
+      );
+    });
+  }, []);
 
-  function deletePokemon (){
-    eliminarPokemon(poke.id).then(function(response){
+  // function consultarId(id) {
+  //   fetch("http://localhost:3000/pokemons/" + id, {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       return Promise.reject(response);
+  //     })
+  //     .then((data) => {
+  //       setPoke(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error.statusText);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   consultarId(idPokemons);
+  //   console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
+  //   //   setPoke(
+  //   //     poke.filter((pokes) => {
+  //   //       return pokes.id == idPokemons;
+  //   //     })
+  //   //   );
+  // }, []);
+
+  function deletePokemon() {
+    eliminarPokemon(poke.id).then(function (response) {
       setPoke({
         id: "003",
         nombre: "MissingNo",
@@ -70,21 +90,11 @@ function BigCard() {
           sdef: "006",
           spd: "029",
         },
-    
-        descripcion: ".....",
-      })})
-    
 
+        descripcion: ".....",
+      });
+    });
   }
-  useEffect(() => {
-    consultarId(idPokemons);
-    console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
-    //   setPoke(
-    //     poke.filter((pokes) => {
-    //       return pokes.id == idPokemons;
-    //     })
-    //   );
-  }, []);
 
   return (
     <div id="bigCardDiv" style={{ backgroundColor: tipoAcolor(poke.tipo1) }}>
@@ -328,11 +338,13 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
-      <p onClick = {deletePokemon}>Eliminar pokemon</p>
+      <p onClick={deletePokemon}>Eliminar pokemon</p>
       <Link
-            id="editar"
-            to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
-          >Editar</Link>
+        id="editar"
+        to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
+      >
+        Editar
+      </Link>
     </div>
   );
 }
