@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
+import {getPokemonById} from "../../API/rule_info"
 
 function BigCard() {
   const { idPokemons } = useParams();
