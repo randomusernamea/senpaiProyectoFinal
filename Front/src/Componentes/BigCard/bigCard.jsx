@@ -32,23 +32,39 @@ function BigCard() {
     descripcion: ".....",
   });
 
-  function consultarId(id) {
-    fetch("http://localhost:3000/pokemons/" + id, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      })
-      .then((data) => {
-        setPoke(data);
-      })
-      .catch((error) => {
-        alert(error.statusText);
-      });
-  }
+  useEffect(() => {
+    getPokemonById(idPokemons).then((data) => {
+      setPoke(data);
+    });
+  }, []);
+
+  // function consultarId(id) {
+  //   fetch("http://localhost:3000/pokemons/" + id, {
+  //     method: "GET",
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       return Promise.reject(response);
+  //     })
+  //     .then((data) => {
+  //       setPoke(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error.statusText);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   consultarId(idPokemons);
+  //   console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
+  //   //   setPoke(
+  //   //     poke.filter((pokes) => {
+  //   //       return pokes.id == idPokemons;
+  //   //     })
+  //   //   );
+  // }, []);
 
   function deletePokemon() {
     eliminarPokemon(poke.id).then(function (response) {
@@ -72,20 +88,9 @@ function BigCard() {
         },
 
         descripcion: ".....",
-      })
-    })
-
-
+      });
+    });
   }
-  useEffect(() => {
-    consultarId(idPokemons);
-    console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
-    //   setPoke(
-    //     poke.filter((pokes) => {
-    //       return pokes.id == idPokemons;
-    //     })
-    //   );
-  }, []);
 
   return (
     <div id="bigCardDiv" style={{ backgroundColor: tipoAcolor(poke.tipo1) }}>
