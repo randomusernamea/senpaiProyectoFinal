@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -10,9 +10,9 @@ function Home() {
   let user = "";
 
   useEffect(() => {
-    loguearUsuario().then((data) => {
-      user = data;
-    });
+    //loguearUsuario().then((data) => {
+    //  user = data;
+    //});
   }, []);
 
   // const login = async () => {
@@ -43,7 +43,7 @@ function Home() {
 
   const onSubmitSesion = async (e) => {
     e.preventDefault();
-    await login();
+    //await login();
     // Promise.resolve(user);
     let a = autenticacion();
     if (a == undefined) {
