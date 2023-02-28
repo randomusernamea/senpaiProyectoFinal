@@ -11,7 +11,7 @@ export const getPokemones = async () => {
 };
 
 export const getPokemonById = async (id) => {
-  return await API.get("/pokedex" + id)
+  return await API.get("/pokedex/" + id)
     .then((response) => {
       return response.data;
     })

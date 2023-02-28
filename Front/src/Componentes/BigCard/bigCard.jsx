@@ -33,12 +33,8 @@ function BigCard() {
   });
 
   useEffect(() => {
-    getPokemonById(idPokemons).then(() => {
-      setPoke(
-        poke.filter((pokes) => {
-          return pokes.id == idPokemons;
-        })
-      );
+    getPokemonById(idPokemons).then((data) => {
+      setPoke(data);
     });
   }, []);
 
