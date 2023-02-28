@@ -15,6 +15,7 @@ function Pokedex() {
   useEffect(() => {
     getPokemones().then((data) => {
       setPokemons(data);
+      setPokemonsOrdered(data);
     });
   }, []);
 
