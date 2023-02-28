@@ -7,23 +7,23 @@ import { editarPokemon } from "../../API/rule_editar"
 
 function PokemonFormComp(params) {
 
-    const queryParams = new URLSearchParams(window.location.search)
-    const [id, setId] = useState(queryParams.get("id") || "")
-    const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
-    const [img, setImg] = useState(queryParams.get("img") || "")
-    const [tipo1, setTipo1] = useState(queryParams.get("tipo1") || "")
-    const [tipo2, setTipo2] = useState(queryParams.get("tipo2") || "")
-    const [weight, setWeight] = useState(queryParams.get("weight") || "")
-    const [height, setHeight] = useState(queryParams.get("height") || "")
-    const [abilities, setAbilities] = useState(queryParams.get("abilities") || "")
-    const [hp, setHp] = useState(queryParams.get("hp") || "")
-    const [atk, setAtk] = useState(queryParams.get("atk") || "")
-    const [def, setDef] = useState(queryParams.get("def") || "")
-    const [satk, setSatk] = useState(queryParams.get("satk") || "")
-    const [sdef, setSdef] = useState(queryParams.get("sdef") || "")
-    const [spd, setSpd] = useState(queryParams.get("spd") || "")
-    const [texto, setTexto] = useState("")
-    const [descripcion, setDescripcion] = useState(queryParams.get("descripcion") || "")
+  const queryParams = new URLSearchParams(window.location.search)
+  const [id, setId] = useState(queryParams.get("id") || "")
+  const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
+  const [img, setImg] = useState(queryParams.get("img") || "")
+  const [tipo1, setTipo1] = useState(queryParams.get("tipo1") || "")
+  const [tipo2, setTipo2] = useState(queryParams.get("tipo2") || "")
+  const [weight, setWeight] = useState(queryParams.get("weight") || "")
+  const [height, setHeight] = useState(queryParams.get("height") || "")
+  const [abilities, setAbilities] = useState(queryParams.get("abilities") || "")
+  const [hp, setHp] = useState(queryParams.get("hp") || "")
+  const [atk, setAtk] = useState(queryParams.get("atk") || "")
+  const [def, setDef] = useState(queryParams.get("def") || "")
+  const [satk, setSatk] = useState(queryParams.get("satk") || "")
+  const [sdef, setSdef] = useState(queryParams.get("sdef") || "")
+  const [spd, setSpd] = useState(queryParams.get("spd") || "")
+  const [descripcion, setDescripcion] = useState(queryParams.get("descripcion") || "")
+  const [texto, setTexto] = useState("")
     
     const onChangeValueId = (e) => {
         setId(e.target.value);
@@ -114,8 +114,8 @@ function PokemonFormComp(params) {
         }
       }
       
-    return (
-      <div class="register-page">
+  return (
+    <div class="register-page">
       <div class="form">
         <form class="register-form" onSubmit={onSubmitPkmn}>
           <label for="id">id:</label>
