@@ -10,13 +10,13 @@ function BottomComp(props) {
   const onSubmitLogout = async (e) => {
     e.preventDefault()
     try {
-      logout(user).then(() => {
+      logout().then(() => {
         localStorage.setHeader('Authorization', `Bearer ${JSON.parse(localStorage.getItem("currentUser")).token}`);
         localStorage.clear();
-        context.commit("setUser", {
+        /* context.commit("setUser", {
           token: null,
           userId: null,
-        });
+        }); */
         localStorage.setHeader('Authorization', null);
         navigate("/")
       })
