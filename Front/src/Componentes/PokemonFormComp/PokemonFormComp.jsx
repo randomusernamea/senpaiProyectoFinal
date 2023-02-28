@@ -115,46 +115,45 @@ function PokemonFormComp(params) {
       }
       
   return (
-    <div class="register-page">
-      <div class="form">
-        <form class="register-form" onSubmit={onSubmitPkmn}>
+    <form onSubmit={onSubmitPkmn}>
           <label for="id">id:</label>
-          <input type="text" id="id" name="id" onChange={onChangeValueId} value={id} />
+          <input type="text" id="id" name="id" onChange = {onChangeValueId} value = {id}/><br/>
           <label for="Nombre">Nombre:</label>
-          <input type="text" id="Nombre" name="Nombre" onChange={onChangeValueNombre} value={nombre} /><br />
+          <input type="text" id="Nombre" name="Nombre" onChange = {onChangeValueNombre} value = {nombre}/><br/>
           <label for="Imagen">Imagen:</label>
-          <input type="text" id="Imagen" name="Imagen" onChange={onChangeValueImg} value={img} /><br />
+          <input type="file" id="Imagen" name="Imagen" onChange = {onChangeValueImg}/><br/>
           <label for="Tipo 1">Tipo 1:</label>
-          <input type="text" id="Tipo 1" name="Tipo 1" onChange={onChangeValueTipo1} value={tipo1} />
+          <input type="text" id="Tipo 1" name="Tipo 1" onChange = {onChangeValueTipo1} value = {tipo1}/><br/>
           <label for="Tipo 2">Tipo 2:</label>
-          <input type="text" id="Tipo 2" name="Tipo 2" onChange={onChangeValueTipo2} value={tipo2} />
+          <input type="text" id="Tipo 2" name="Tipo 2" onChange = {onChangeValueTipo2} value = {tipo2}/><br/>
           <label for="Weight">Weight:</label>
-          <input type="text" id="Weight" name="Weight" onChange={onChangeValueWeight} value={weight} />
+          <input type="text" id="Weight" name="Weight" onChange = {onChangeValueWeight} value = {weight}/><br/>
           <label for="Height">Height:</label>
-          <input type="text" id="Height" name="Height" onChange={onChangeValueHeight} value={height} /><br />
+          <input type="text" id="Height" name="Height" onChange = {onChangeValueHeight} value = {height}/><br/>
           <label for="Abilities">Abilities:</label>
-          <input type="text" id="Abilities" name="Abilities" onChange={onChangeValueAbilities} value={abilities} /><br />
+          <input type="text" id="Abilities" name="Abilities" onChange = {onChangeValueAbilities} value = {abilities}/><br/>
           <label for="HP">HP:</label>
-          <input type="text" id="HP" name="HP" onChange={onChangeValueHp} value={hp} />
+          <input type="text" id="HP" name="HP" onChange = {onChangeValueHp} value = {hp}/><br/>
           <label for="atk">atk:</label>
-          <input type="text" id="atk" name="atk" onChange={onChangeValueAtk} value={atk} />
+          <input type="text" id="atk" name="atk" onChange = {onChangeValueAtk} value = {atk}/><br/>
           <label for="def">def:</label>
-          <input type="text" id="def" name="def" onChange={onChangeValueDef} value={def} />
+          <input type="text" id="def" name="def" onChange = {onChangeValueDef} value = {def}/><br/>
           <label for="satk">satk:</label>
-          <input type="text" id="satk" name="satk" onChange={onChangeValueSatk} value={satk} />
-          <label for="sdef">sdef:</label>
-          <input type="text" id="sdef" name="sdef" onChange={onChangeValueSdef} value={sdef} />
+          <input type="text" id="satk" name="satk" onChange = {onChangeValueSatk} value = {satk}/><br/>
+          <label for="sdef">setDef:</label>
+          <input type="text" id="sdef" name="sdef" onChange = {onChangeValueSdef} value = {sdef}/><br/>
           <label for="spd">spd:</label>
-          <input type="text" id="spd" name="spd" onChange={onChangeValueSpd} value={spd} /><br />
+          <input type="text" id="spd" name="spd" onChange = {onChangeValueSpd} value = {spd}/><br/>
           <label for="Descripcion">Descripcion:</label>
-          <input type="text" id="Descripcion" name="Descripcion" onChange={onChangeValueDescripcion} value={descripcion} /><br />
-          <button type="submit">
-            Enviar datos
-          </button>
-          <p>{texto}</p>
-        </form>
-      </div>
-    </div>
+          <input type="text" id="Descripcion" name="Descripcion" onChange = {onChangeValueDescripcion} value = {descripcion}/><br/>
+          <button id="crearBtn" type="submit">
+                  Enviar datos
+              </button>
+              <p>{texto}</p>
+              {img.preview && (
+            <img src={img.preview} width="100" height="100" alt="Imagen subida" />
+            )}
+      </form>   
     )
 }
 
