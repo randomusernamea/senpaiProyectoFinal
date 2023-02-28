@@ -13,6 +13,10 @@ function BottomComp(props) {
       logout().then(() => {
         localStorage.setHeader('Authorization', `Bearer ${JSON.parse(localStorage.getItem("currentUser")).token}`);
         localStorage.clear();
+        /* context.commit("setUser", {
+          token: null,
+          userId: null,
+        }); */
         localStorage.setHeader('Authorization', null);
         navigate("/")
       })

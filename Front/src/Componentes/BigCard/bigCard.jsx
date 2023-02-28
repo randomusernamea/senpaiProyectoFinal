@@ -335,13 +335,15 @@ function BigCard() {
         </div>
       </div>
       <div id="bigCardPokeBallImage"></div>
-      <p onClick={deletePokemon}>Eliminar pokemon</p>
-      <Link
-        id="editar"
-        to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
-      >
-        Editar
-      </Link>
+      <div className="group-buttons">
+        <button onClick={deletePokemon} class='glowing-btn' id="eliminar"><span class='glowing-txt'>EL<span class='faulty-letter'>I</span>MINAR</span></button>
+        <Link
+          id="editar"
+          to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
+        >
+          <button class='glowing-btn-2'><span class='glowing-txt-2'>ED<span class='faulty-letter'>I</span>TAR</span></button>
+        </Link>
+      </div>
     </div>
   );
 }
