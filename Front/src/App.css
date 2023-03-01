@@ -32,16 +32,21 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-pokedex{background-color: #EEEEEE;}
-
-a:link {text-decoration:none}
-
-*{
-  font-family: 'Poppins', sans-serif; ;
+pokedex {
+  background-color: #EEEEEE;
 }
 
+a:link {
+  text-decoration: none
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  ;
+}
