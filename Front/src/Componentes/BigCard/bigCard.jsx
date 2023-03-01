@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
+import {getPokemonById} from "../../API/rule_info"
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -103,7 +104,7 @@ function BigCard() {
         {getPrevious(poke.id) !== "000" && (
           <Link
             id="bigCardArrowLeft"
-            onClick={() => consultarId(getPrevious(poke.id))}
+            //onClick={() => consultarId(getPrevious(poke.id))}
             to={`/pokemons/${getPrevious(poke.id)}`}
           ></Link>
         )}
@@ -111,7 +112,7 @@ function BigCard() {
         {getNext(poke.id) !== "000" && (
           <Link
             id="bigCardArrowRight"
-            onClick={() => consultarId(getNext(poke.id))}
+            //onClick={() => consultarId(getNext(poke.id))}
             to={`/pokemons/${getNext(poke.id)}`}
           ></Link>
         )}
