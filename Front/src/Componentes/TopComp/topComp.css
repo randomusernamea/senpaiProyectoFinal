@@ -1,56 +1,58 @@
-#topCompInput{
+#topCompInput {
     text-align: center;
     border-radius: 10px;
-    border-style:solid;
+    border-style: solid;
     border-width: 2px;
     border-color: rgb(192, 186, 186);
     grid-area: search;
-    height: 30px;
-    width: 90%;
+    height: 2rem;
+    width: 60%;
     margin: auto;
+    margin-bottom: 1rem;
 }
 
-#topComp{
-    width:100%;
+#topComp {
+    width: 100vw;
+    height: 10vh;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 60px 1fr 60px;
-    grid-template-areas: 
-    "pokeballImg title changeSorting"
-    "search search search"
+    grid-template-areas:
+        "pokeballImg title changeSorting"
+        "search search search"
 }
 
-#pokeballImg{
+#pokeballImg {
 
-    grid-area:pokeballImg
+    grid-area: pokeballImg
 }
 
-#topCompSortingButton{
+#topCompSortingButton {
     background-color: transparent;
     border: 0;
-    grid-area:changeSorting;
+    grid-area: changeSorting;
     height: 64px;
     width: 40px;
     margin: 10px;
     padding: 0;
 }
 
-.changeSortingButtontrue{
+.changeSortingButtontrue {
     background-size: contain;
     background-repeat: no-repeat;
-   background-image: url('./Imgs/sort-az.png')
+    background-image: url('./Imgs/sort-az.png')
 }
 
-.changeSortingButtonfalse{
+.changeSortingButtonfalse {
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('./Imgs/Number\ Search.png')
 }
 
-#pokeballImg{
+#pokeballImg {
     width: 32px;
     height: 32px;
-    margin:auto;
+    margin: auto;
 }
 
 #topCompTitle {
