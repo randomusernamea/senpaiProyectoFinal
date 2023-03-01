@@ -79,6 +79,7 @@ function PokemonFormComp(params) {
     let formData = new FormData()
     formData.append('Imagen', img.data)
     const Pokemon = {
+      idViejo: queryParams.get("id"),
       id: id,
       nombre: nombre,
       img: img,
