@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registrarUsuario } from "../../API/rule_Registrar";
-import "./registrar.css";
+import "../Register/registrar.css";
 
 function Registrar() {
   const [usuario, setUsuario] = useState("");
@@ -28,40 +28,45 @@ function Registrar() {
     })
   }
   return (
-    <div className="HomePageBackground">
-      <div className="HomeLogin">
-        <form className="HomePageForm" onSubmit={onSubmitSesion}>
-          <label htmlFor="email">E-mail</label>
-          <br />
-          <input
-            type="text"
-            onChange={onChangeValueUsuario}
-            value={usuario}
-            required
-            placeholder="e-mail"
-          />
-          <br />
-          <label htmlFor="password" required>
-            Password
-          </label>
-          <br />
-          <input
-            type="password"
-            value={clave}
-            onChange={onChangeValueClave}
-            placeholder="password"
-          />
-          <br />
-          <label htmlFor="Nombre">Nombre</label>
-          <br />
-          <input
-            type="text"
-            onChange={onChangeValueNombre}
-            value={nombre}
-            required
-            placeholder="Nombre"
-          />
-          <br />
+    <div className="page-register">
+      <div className="container-form">
+        <form className="" onSubmit={onSubmitSesion}>
+          <div className="group">
+            <input
+              className="input"
+              type="text"
+              onChange={onChangeValueUsuario}
+              value={usuario}
+              required
+            />
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label htmlFor="email">E-mail</label>
+          </div>
+          <div className="group">
+            <input
+              className="input"
+              type="password"
+              value={clave}
+              onChange={onChangeValueClave}
+              required
+            />
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label htmlFor="password" required>Password</label>
+          </div>
+          <div className="group">
+            <input
+              className="input"
+              type="text"
+              onChange={onChangeValueNombre}
+              value={nombre}
+              required
+            />
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label htmlFor="Nombre">Nombre</label>
+          </div>
           {/* <Link to={`pokedex`}> */}
           <button id="btn-neon" type="submit">
             Iniciar
