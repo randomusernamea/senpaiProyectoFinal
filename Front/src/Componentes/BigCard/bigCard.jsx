@@ -6,7 +6,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
-import {getPokemonById} from "../../API/rule_info"
+import {getPokemonById} from "../../API/rule_info";
+import {numeroATipo} from "../../Utilities/utilities"
+import {directorio} from "../../Utilities/Directorio"
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -35,7 +37,12 @@ function BigCard() {
 
   useEffect(() => {
     getPokemonById(idPokemons).then((data) => {
-      setPoke(data);
+      console.log(data)
+      //Convierte los stats a string porque despues se les hace concat que es una funcion de String
+      data[0].stats = {hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd)}
+      data[0].tipo1 = numeroATipo(data[0].tipo_id[0])
+      data[0].tipo2 = numeroATipo(data[0].tipo_id[1])
+      setPoke(data[0]);
     });
   }, []);
 

@@ -114,3 +114,7 @@ export const getNext = (id) => {
       return "000";
   }
 };
+
+export const numeroATipo = (numero) => {
+  return "Normal"
+}
