@@ -103,7 +103,7 @@ function BigCard() {
   return (
     <div id="bigCardDiv" style={{ backgroundColor: tipoAcolor(poke.tipo1) }}>
       <div id="bigCardTopDiv">
-        <Link to={"/pokedex"}>
+        <Link to={"/"}>
           <div id="bigCardArrow"> </div>
         </Link>
         <p id="bigCardName">{poke.nombre}</p>
