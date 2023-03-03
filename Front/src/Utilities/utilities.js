@@ -87,3 +87,7 @@ export const tipoAcolor = (tipo) => {
 //     //   return "000";
 //   }
 // };
+
+export const numeroATipo = (numero) => {
+  return "Normal"
+}

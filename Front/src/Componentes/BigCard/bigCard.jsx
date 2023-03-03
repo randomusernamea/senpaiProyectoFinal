@@ -1,6 +1,6 @@
 import "./bigCard.css";
-import { tipoAcolor, getPrevious, getNext } from "../../Utilities/utilities";
-
+import { tipoAcolor, numeroATipo, getPrevious, getNext } from "../../Utilities/utilities";
+import { directorio } from "../../Utilities/Directorio";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -12,7 +12,26 @@ function BigCard() {
   const { idPokemons } = useParams();
 
   const [pokemones, setPokemones] = useState();
-  const [poke, setPoke] = useState();
+  const [poke, setPoke] = useState({
+    id: "000",
+    nombre: "MissingNo",
+    img: "/images/000.svg",
+    tipo1: "Normal",
+    tipo2: "",
+    weight: "10,0kg",
+    height: "1,0m",
+    ability1: "Error",
+    ability2: "",
+    stats: {
+      hp: "033",
+      atk: "136",
+      def: "000",
+      satk: "006",
+      sdef: "006",
+      spd: "029",
+    },
+    descripcion: ".....",
+  });
   const [indice, setIndice] = useState();
 
   useEffect(() => {
@@ -23,7 +42,12 @@ function BigCard() {
 
   useEffect(() => {
     getPokemonById(idPokemons).then((data) => {
-      setPoke(data);
+      console.log(data);
+      //Convierte los stats a string porque despues se les hace concat que es una funcion de String
+      data[0].stats = { hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd) };
+      data[0].tipo1 = numeroATipo(data[0].tipo_id[0]);
+      data[0].tipo2 = numeroATipo(data[0].tipo_id[1]);
+      setPoke(data[0]);
     });
   }, []);
 
