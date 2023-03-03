@@ -74,16 +74,6 @@ function BigCard() {
 
         <Link id="bigCardArrowLeft" to={`/pokemons/${pokemones[indice == 0 ? pokemones.length - 1 : indice - 1].id}`}></Link>
         <img src={poke.img} id="bigCardPokeImg" alt={poke.nombre} />
-
-        {/* 
-        
-        {getNext(poke.id) > "000" && (
-          <Link
-            id="bigCardArrowRight"
-            //onClick={() => consultarId(getNext(poke.id))}
-            to={`/pokemons/${getNext(poke.id)}`}
-          ></Link>
-        )} */}
       </div>
 
       <div id="bigCardBottomDiv">
