@@ -16,10 +16,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Pokedex />,
   },
-  // {
-  //   path: "pokedex",
-  //   element: <Pokedex />,
-  // },
   {
     path: "pokemons/:idPokemons",
     element: <BigCard />,

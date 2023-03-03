@@ -6,32 +6,20 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
-import {getPokemonById} from "../../API/rule_info"
+import { getPokemones, getPokemonById } from "../../API/rule_info";
 
 function BigCard() {
   const { idPokemons } = useParams();
 
-  const [poke, setPoke] = useState({
-    id: "000",
-    nombre: "MissingNo",
-    img: "/images/000.svg",
-    tipo1: "Normal",
-    tipo2: "",
-    weight: "10,0kg",
-    height: "1,0m",
-    ability1: "Error",
-    ability2: "",
-    stats: {
-      hp: "033",
-      atk: "136",
-      def: "000",
-      satk: "006",
-      sdef: "006",
-      spd: "029",
-    },
+  const [pokemones, setPokemones] = useState();
+  const [poke, setPoke] = useState();
+  const [indice, setIndice] = useState();
 
-    descripcion: ".....",
-  });
+  useEffect(() => {
+    getPokemones().then((data) => {
+      setPokemones(data);
+    });
+  }, []);
 
   useEffect(() => {
     getPokemonById(idPokemons).then((data) => {
@@ -39,33 +27,13 @@ function BigCard() {
     });
   }, []);
 
-  // function consultarId(id) {
-  //   fetch("http://localhost:3000/pokemons/" + id, {
-  //     method: "GET",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //       return Promise.reject(response);
-  //     })
-  //     .then((data) => {
-  //       setPoke(data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.statusText);
-  //     });
-  // }
+  const indiceActual = () => {
+    setIndice(pokemones.findIndex((po) => po.id === poke.id));
+  };
 
-  // useEffect(() => {
-  //   consultarId(idPokemons);
-  //   console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
-  //   //   setPoke(
-  //   //     poke.filter((pokes) => {
-  //   //       return pokes.id == idPokemons;
-  //   //     })
-  //   //   );
-  // }, []);
+  useEffect(() => {
+    indiceActual();
+  }, []);
 
   function deletePokemon() {
     eliminarPokemon(poke.id).then(function (response) {
@@ -87,7 +55,6 @@ function BigCard() {
           sdef: "006",
           spd: "029",
         },
-
         descripcion: ".....",
       });
     });
@@ -101,75 +68,43 @@ function BigCard() {
         </Link>
         <p id="bigCardName">{poke.nombre}</p>
         <p id="bigCardId">#{poke.id}</p>
-        {getPrevious(poke.id) !== "000" && (
-          <Link
-            id="bigCardArrowLeft"
-            //onClick={() => consultarId(getPrevious(poke.id))}
-            to={`/pokemons/${getPrevious(poke.id)}`}
-          ></Link>
-        )}
+
+        <Link id="bigCardArrowRight" to={`/pokemons/${pokemones[pokemones.length - 1 < indice + 1 ? indice + 1 : 0].id}`}></Link>
         <img src={poke.img} id="bigCardPokeImg" alt={poke.nombre} />
-        {getNext(poke.id) !== "000" && (
+
+        <Link id="bigCardArrowLeft" to={`/pokemons/${pokemones[indice == 0 ? pokemones.length - 1 : indice - 1].id}`}></Link>
+        <img src={poke.img} id="bigCardPokeImg" alt={poke.nombre} />
+
+        {/* 
+        
+        {getNext(poke.id) > "000" && (
           <Link
             id="bigCardArrowRight"
             //onClick={() => consultarId(getNext(poke.id))}
             to={`/pokemons/${getNext(poke.id)}`}
           ></Link>
-        )}
+        )} */}
       </div>
 
       <div id="bigCardBottomDiv">
         <div id="bigCardEvosDiv">
-          <p
-            className="bigCardPAbout"
-            style={{ color: tipoAcolor(poke.tipo1) }}
-            id="bigCardPAbout"
-          >
+          <p className="bigCardPAbout" style={{ color: tipoAcolor(poke.tipo1) }} id="bigCardPAbout">
             Evoluciones
           </p>
           {(poke.stage1 || poke.stage2 || poke.stage3) && (
             <div id="bigCardPEvos">
-              {poke.stage1 && (
-                <img
-                  id="bigCardPokeStageImg1"
-                  className="bigCardPokeStageImg"
-                  src={poke.stage1pic}
-                  alt={poke.stage1}
-                />
-              )}
-              {poke.stage2 && (
-                <img
-                  id="bigCardPokeStageImg2"
-                  className="bigCardPokeStageImg"
-                  src={poke.stage2pic}
-                  alt={poke.stage2}
-                />
-              )}
-              {poke.stage3 && (
-                <img
-                  id="bigCardPokeStageImg3"
-                  className="bigCardPokeStageImg"
-                  src={poke.stage3pic}
-                  alt={poke.stage3}
-                />
-              )}
+              {poke.stage1 && <img id="bigCardPokeStageImg1" className="bigCardPokeStageImg" src={poke.stage1pic} alt={poke.stage1} />}
+              {poke.stage2 && <img id="bigCardPokeStageImg2" className="bigCardPokeStageImg" src={poke.stage2pic} alt={poke.stage2} />}
+              {poke.stage3 && <img id="bigCardPokeStageImg3" className="bigCardPokeStageImg" src={poke.stage3pic} alt={poke.stage3} />}
             </div>
           )}
         </div>
         <div id="bigCardTipos">
-          <p
-            className="tipo"
-            style={{ backgroundColor: tipoAcolor(poke.tipo1) }}
-            id="tipo1"
-          >
+          <p className="tipo" style={{ backgroundColor: tipoAcolor(poke.tipo1) }} id="tipo1">
             {poke.tipo1}
           </p>
           {poke.tipo2 !== "" && (
-            <p
-              className="tipo"
-              style={{ backgroundColor: tipoAcolor(poke.tipo2) }}
-              id="tipo2"
-            >
+            <p className="tipo" style={{ backgroundColor: tipoAcolor(poke.tipo2) }} id="tipo2">
               {poke.tipo2}
             </p>
           )}
@@ -192,9 +127,7 @@ function BigCard() {
           <div id="bigCardAbilities">
             <div id="bigCardAbilitiesDiv">
               <p className="bigCardPokeParamsP">{poke.ability1}</p>
-              {poke.ability2 !== "" && (
-                <p className="bigCardPokeParamsP">{poke.ability2}</p>
-              )}
+              {poke.ability2 !== "" && <p className="bigCardPokeParamsP">{poke.ability2}</p>}
             </div>
             <p id="bigCardParamsAbilities" className="bigCardPokeParamsDesc ">
               Abilities
@@ -235,9 +168,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.hp))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.hp)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -253,9 +184,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.atk))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.atk)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -271,9 +200,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.def))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.def)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -289,9 +216,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.satk))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.satk)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -307,9 +232,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.sdef))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.sdef)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -325,9 +248,7 @@ function BigCard() {
                 className="bigCardStatsRest"
                 style={{
                   backgroundColor: tipoAcolor(poke.tipo1).concat("66"),
-                  width: (255 - parseInt(poke.stats.spd))
-                    .toString()
-                    .concat("px"),
+                  width: (255 - parseInt(poke.stats.spd)).toString().concat("px"),
                 }}
               ></div>
             </div>
@@ -336,12 +257,17 @@ function BigCard() {
       </div>
       <div id="bigCardPokeBallImage"></div>
       <div className="group-buttons">
-        <button onClick={deletePokemon} class='glowing-btn' id="eliminar"><span class='glowing-txt'>EL<span class='faulty-letter'>I</span>MINAR</span></button>
-        <Link
-          id="editar"
-          to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}
-        >
-          <button class='glowing-btn-2'><span class='glowing-txt-2'>ED<span class='faulty-letter'>I</span>TAR</span></button>
+        <button onClick={deletePokemon} class="glowing-btn" id="eliminar">
+          <span class="glowing-txt">
+            EL<span class="faulty-letter">I</span>MINAR
+          </span>
+        </button>
+        <Link id="editar" to={`/editar?id=${poke.id}&nombre=${poke.nombre}&imagen=${poke.imagen}&tipo1=${poke.tipo1}&tipo2=${poke.tipo2}&weight=${poke.weight}&height=${poke.height}&abilities=${poke.ability1}/${poke.ability2}&hp=${poke.stats.hp}&atk=${poke.stats.hp}&def=${poke.stats.def}&satk=${poke.stats.satk}&sdef=${poke.stats.sdef}&spd=${poke.stats.spd}`}>
+          <button class="glowing-btn-2">
+            <span class="glowing-txt-2">
+              ED<span class="faulty-letter">I</span>TAR
+            </span>
+          </button>
         </Link>
       </div>
     </div>
