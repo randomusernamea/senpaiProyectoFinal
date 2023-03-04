@@ -116,5 +116,44 @@ export const getNext = (id) => {
 };
 
 export const numeroATipo = (numero) => {
-  return "Normal"
+  switch(numero){
+    case 1:
+      return "Normal";
+    case 2: 
+      return "Rock"
+    case 3:
+      return "Ghost"
+    case 4:
+      return "Steel"
+    case 5:
+      return "Water"
+    case 6: 
+      return "Fighting"
+    case 7:
+      return "Flying"
+    case 8:
+      return "Poison"
+    case 9:
+      return "Fairy"
+    case 10:
+      return "Dragon"
+    case 11:
+      return "Dark"
+    case 12:
+      return "Electric"
+    case 13:
+      return "Grass"
+    case 14:
+      return "Fire"
+    case 15:
+      return "Ice"
+    case 16:
+      return "Psychic"
+    case 17:
+      return "Bug"
+    case 18:
+      return "Ground"
+    default:
+      return "Normal"
+  }
 }
