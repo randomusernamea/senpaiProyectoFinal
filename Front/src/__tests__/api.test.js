@@ -5,35 +5,35 @@ const api = supertest(app);
 
 test("login are returned as json", async () => {
     await api
-        .get("api/login")
+        .post("api/login")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
 
 test("logout are returned as json", async () => {
     await api
-        .get("api/logout")
+        .delete("api/logout")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
 
 test("crear are returned as json", async () => {
     await api
-        .get("api/pokemon/nuevo")
+        .post("api/pokemon/nuevo")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
 
 test("editar are returned as json", async () => {
     await api
-        .get("api/pokemon/editar")
+        .put("api/pokemon/editar")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
 
 test("eliminar are returned as json", async () => {
     await api
-        .get("api/pokemon/eliminar")
+        .delete("api/pokemon/eliminar")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
@@ -47,7 +47,7 @@ test("info are returned as json", async () => {
 
 test("registrar are returned as json", async () => {
     await api
-        .get("api/register")
+        .post("api/register")
         .expect(200)
         .expect("Content-Type", /application\/json/)
 })
