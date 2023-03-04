@@ -39,7 +39,7 @@ function BottomComp(props) {
                 tipo={poke.tipo1}
                 nombre={poke.nombre}
                 pokeid={poke.id}
-                pokeimg={poke.img}
+                pokeimg={"http://" + poke.foto}
               ></Card>
             </Link>
           );

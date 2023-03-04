@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
 import {getPokemonById} from "../../API/rule_info";
 import {numeroATipo} from "../../Utilities/utilities"
-import {directorio} from "../../Utilities/Directorio"
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -37,42 +36,29 @@ function BigCard() {
 
   useEffect(() => {
     getPokemonById(idPokemons).then((data) => {
-      console.log(data)
       //Convierte los stats a string porque despues se les hace concat que es una funcion de String
       data[0].stats = {hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd)}
       data[0].tipo1 = numeroATipo(data[0].tipo_id[0])
       data[0].tipo2 = numeroATipo(data[0].tipo_id[1])
+      console.log(data[0])
+      data[0].height = String(data[0].altura).replace(".",",") + "m"
+      data[0].weight = String(data[0].peso).replace(".",",") + "kg"
+      delete data[0]["altura"]
+      delete data[0]["peso"]
+      delete data[0]["hp"]
+      delete data[0]["atk"]
+      delete data[0]["def"]
+      delete data[0]["sdef"]
+      delete data[0]["satk"]
+      delete data[0]["spd"]
+      data[0].ability1 = data[0].habilidad[0]
+      if (data[0].habilidad[1]) {
+        data[0].ability2 = data[0].habilidad[1]
+      }
+      delete data[0]["habilidad"]
       setPoke(data[0]);
     });
   }, []);
-
-  // function consultarId(id) {
-  //   fetch("http://localhost:3000/pokemons/" + id, {
-  //     method: "GET",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //       return Promise.reject(response);
-  //     })
-  //     .then((data) => {
-  //       setPoke(data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.statusText);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   consultarId(idPokemons);
-  //   console.log(toString(255 - parseInt(poke.stats.spd)).concat("px"));
-  //   //   setPoke(
-  //   //     poke.filter((pokes) => {
-  //   //       return pokes.id == idPokemons;
-  //   //     })
-  //   //   );
-  // }, []);
 
   function deletePokemon() {
     eliminarPokemon(poke.id).then(function (response) {
@@ -103,7 +89,7 @@ function BigCard() {
   return (
     <div id="bigCardDiv" style={{ backgroundColor: tipoAcolor(poke.tipo1) }}>
       <div id="bigCardTopDiv">
-        <Link to={"/pokedex"}>
+        <Link to={"/"}>
           <div id="bigCardArrow"> </div>
         </Link>
         <p id="bigCardName">{poke.nombre}</p>
@@ -115,7 +101,7 @@ function BigCard() {
             to={`/pokemons/${getPrevious(poke.id)}`}
           ></Link>
         )}
-        <img src={poke.img} id="bigCardPokeImg" alt={poke.nombre} />
+        <img src={"http://" + poke.foto} id="bigCardPokeImg" alt={poke.nombre}/>
         {getNext(poke.id) !== "000" && (
           <Link
             id="bigCardArrowRight"

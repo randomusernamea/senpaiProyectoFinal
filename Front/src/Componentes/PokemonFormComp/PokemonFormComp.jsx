@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { crearPokemon } from "../../API/rule_crear"
 import { editarPokemon } from "../../API/rule_editar"
+import { useNavigate } from "react-router-dom";
 
 function PokemonFormComp(params) {
-
+  let navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search)
   const [id, setId] = useState(queryParams.get("id") || "")
   const [nombre, setNombre] = useState(queryParams.get("nombre") || "")
@@ -111,6 +112,7 @@ function PokemonFormComp(params) {
       editarPokemon(formData).then((response) => {
         //todo Manejar la respuesta
         setTexto("Pokemon editado exitosamente")
+        navigate("/Pokemons/" + id)
       })
     }
   }
