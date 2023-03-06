@@ -7,6 +7,7 @@ function Registrar() {
   const [usuario, setUsuario] = useState("");
   const [nombre, setNombre] = useState("");
   const [clave, setClave] = useState("");
+  const [mensajeError, setMensajeError] = useState("");
   let navigate = useNavigate();
   const onChangeValueUsuario = (e) => {
     setUsuario(e.target.value);
@@ -24,7 +25,13 @@ function Registrar() {
     e.preventDefault()
     const user = { nombre: nombre, correo: usuario, clave: clave, permisos: 1 }
     registrarUsuario(user).then((response) => {
-      navigate("/Login")
+      console.log(response instanceof Error)
+      if (!(response instanceof Error)){
+        navigate("/Login")
+      }
+      else {
+        setMensajeError(response.message)
+      } 
     })
   }
   return (
