@@ -122,9 +122,9 @@ function PokemonFormComp(params) {
       <div className="form">
         <form onSubmit={onSubmitPkmn} className="register-form">
           <label for="id">id:</label>
-          <input type="text" id="id" name="id" onChange={onChangeValueId} value={id} />
+          <input type="text" id="id" name="id" onChange={onChangeValueId} value={id} placeholder = "Id"/>
           <label for="Nombre">Nombre:</label>
-          <input type="text" id="Nombre" name="Nombre" onChange={onChangeValueNombre} value={nombre} />
+          <input type="text" id="Nombre" name="Nombre" onChange={onChangeValueNombre} value={nombre} placeholder = "Nombre"/>
           <label for="Imagen">Imagen:</label>
           <input type="file" id="Imagen" name="Imagen" onChange={onChangeValueImg} />
           <label for="Imagen">Imagen subida:</label>
@@ -132,29 +132,29 @@ function PokemonFormComp(params) {
             <img src={img.preview} width="100" height="100" alt="Imagen subida" />
           ) : <label>?</label>}
           <label for="Tipo 1">Tipo 1:</label>
-          <input type="text" id="Tipo 1" name="Tipo 1" onChange={onChangeValueTipo1} value={tipo1} />
+          <input type="text" id="Tipo 1" name="Tipo 1" onChange={onChangeValueTipo1} value={tipo1} placeholder = "Tipo 1"/>
           <label for="Tipo 2">Tipo 2:</label>
-          <input type="text" id="Tipo 2" name="Tipo 2" onChange={onChangeValueTipo2} value={tipo2} />
+          <input type="text" id="Tipo 2" name="Tipo 2" onChange={onChangeValueTipo2} value={tipo2} placeholder = "Tipo 2"/>
           <label for="Weight">Weight:</label>
-          <input type="text" id="Weight" name="Weight" onChange={onChangeValueWeight} value={weight} />
+          <input type="text" id="Weight" name="Weight" onChange={onChangeValueWeight} value={weight} placeholder = "Peso"/>
           <label for="Height">Height:</label>
-          <input type="text" id="Height" name="Height" onChange={onChangeValueHeight} value={height} /><br />
+          <input type="text" id="Height" name="Height" onChange={onChangeValueHeight} value={height} placeholder = "Altura"/><br/>
           <label for="Abilities">Abilities:</label>
-          <input type="text" id="Abilities" name="Abilities" onChange={onChangeValueAbilities} value={abilities} /><br />
+          <input type="text" id="Abilities" name="Abilities" onChange={onChangeValueAbilities} value={abilities} placeholder = "Habilidad 1/Habilidad 2"/><br />
           <label for="HP">HP:</label>
-          <input type="text" id="HP" name="HP" onChange={onChangeValueHp} value={hp} />
+          <input type="text" id="HP" name="HP" onChange={onChangeValueHp} value={hp} placeholder = "HP"/>
           <label for="atk">atk:</label>
-          <input type="text" id="atk" name="atk" onChange={onChangeValueAtk} value={atk} />
+          <input type="text" id="atk" name="atk" onChange={onChangeValueAtk} value={atk} placeholder = "Atk"/>
           <label for="def">def:</label>
-          <input type="text" id="def" name="def" onChange={onChangeValueDef} value={def} />
+          <input type="text" id="def" name="def" onChange={onChangeValueDef} value={def} placeholder = "Def"/>
           <label for="satk">satk:</label>
-          <input type="text" id="satk" name="satk" onChange={onChangeValueSatk} value={satk} />
+          <input type="text" id="satk" name="satk" onChange={onChangeValueSatk} value={satk} placeholder = "Satk"/>
           <label for="sdef">setDef:</label>
-          <input type="text" id="sdef" name="sdef" onChange={onChangeValueSdef} value={sdef} />
+          <input type="text" id="sdef" name="sdef" onChange={onChangeValueSdef} value={sdef} placeholder = "Sdef"/>
           <label for="spd">spd:</label>
-          <input type="text" id="spd" name="spd" onChange={onChangeValueSpd} value={spd} />
+          <input type="text" id="spd" name="spd" onChange={onChangeValueSpd} value={spd} placeholder = "Spd"/>
           <label for="Descripcion">Descripcion:</label>
-          <input type="text" id="Descripcion" name="Descripcion" onChange={onChangeValueDescripcion} value={descripcion} /><br />
+          <input type="text" id="Descripcion" name="Descripcion" onChange={onChangeValueDescripcion} value={descripcion} placeholder = "Descripcion"/><br />
           <button id="crearBtn" type="submit">
             Enviar datos
           </button>
