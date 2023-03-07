@@ -103,16 +103,22 @@ function PokemonFormComp(params) {
     if (params.tarea === "agregar") {
       setTexto("Creando Pokemon...")
       crearPokemon(formData).then((response) => {
-        //todo Manejar la respuesta
-        setTexto("Pokemon creado exitosamente")
+        if (response instanceof Error){
+          setTexto(response.message)
+        }else {
+          setTexto("Pokemon creado exitosamente")
+        }
       })
     }
     else {
       setTexto("Editando Pokemon...")
       editarPokemon(formData).then((response) => {
-        //todo Manejar la respuesta
-        setTexto("Pokemon editado exitosamente")
-        navigate("/Pokemons/" + id)
+        if (response instanceof Error){
+          setTexto(response.message)
+        }else {
+          setTexto("Pokemon editado exitosamente")
+          navigate("/Pokemons/" + id)
+        }
       })
     }
   }
