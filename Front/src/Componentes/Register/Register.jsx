@@ -29,8 +29,8 @@ function Registrar() {
   }
   return (
     <div className="page-register">
-      <div className="container-form">
-        <form className="" onSubmit={onSubmitSesion}>
+      <div className="">
+        <form className="form-register" onSubmit={onSubmitSesion}>
           <div className="group">
             <input
               className="input"

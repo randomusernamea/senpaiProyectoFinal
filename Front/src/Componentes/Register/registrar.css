@@ -1,10 +1,10 @@
 .page-register {
     width: 100vw;
-    height: 50vh;
+    height: 80vh;
     margin-top: 20vh;
 }
 
-form {
+.form-register {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -12,14 +12,15 @@ form {
     width: 50vw;
     height: 400px;
     margin: auto;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background: linear-gradient(to left, #4cafafc0, #2060a086);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.479), 0 5px 5px 0 rgba(0, 0, 0, 0.308);
 }
 
 .group {
     position: relative;
 }
 
-.input {
+.group .input {
     font-size: 16px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -30,11 +31,11 @@ form {
     color: #ffffff;
 }
 
-.input:focus {
+.group .input:focus {
     outline: none;
 }
 
-label {
+.group label {
     color: #999999;
     font-size: 18px;
     font-weight: normal;
@@ -45,11 +46,11 @@ label {
     transition: 0.2s ease all;
 }
 
-.input:focus~label,
-.input:valid~label {
+.group .input:focus~label,
+.group .input:valid~label {
     top: -20px;
     font-size: 14px;
-    color: #0e94f4;
+    color: #1a1a1a;
 }
 
 .bar {
@@ -77,8 +78,8 @@ label {
     right: 50%;
 }
 
-.input:focus~.bar:before,
-.input:focus~.bar:after {
+.group .input:focus~.bar:before,
+.group .input:focus~.bar:after {
     width: 50%;
 }
 
@@ -92,7 +93,7 @@ label {
     opacity: 0.5;
 }
 
-.input:focus~.highlight {
+.group .input:focus~.highlight {
     animation: input-focus 0.5s ease;
 }
 

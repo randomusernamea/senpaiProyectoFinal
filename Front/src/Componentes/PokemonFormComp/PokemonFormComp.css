@@ -1,11 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-    background: #4CAFAF;
-    background: -webkit-linear-gradient(right, #4CAFAF, #205FA0);
-    background: -moz-linear-gradient(right, #4CAFAF, #205FA0);
-    background: -o-linear-gradient(right, #4CAFAF, #205FA0);
-    background: linear-gradient(to left, #4CAFAF, #205FA0);
+    background-image: url("../../../public/images/wallpaperPokemon.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -15,21 +13,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1200px;
     padding: 4% 0 0;
     margin: auto;
 }
 
-.form {
+.container-form {
+    background: #4CAFAF;
+    background: -webkit-linear-gradient(right, #4CAFAF, #205FA0);
+    background: -moz-linear-gradient(right, #4CAFAF, #205FA0);
+    background: -o-linear-gradient(right, #4CAFAF, #205FA0);
+    background: linear-gradient(to left, #4CAFAF, #205FA0);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 1000px;
-    height: 1000px;
     z-index: 1;
     padding: 45px;
-    text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -38,24 +34,26 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(10, 1fr);
     align-items: center;
-    gap: 25px;
-    width: 800px;
+    gap: 15px;
+    width: 900px;
     height: 900px;
 }
 
-.form input {
+.container-form input,
+.container-form label {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #f2f2f2;
     width: 100%;
     border: 0;
-    margin: auto;
     padding: 15px;
-    box-sizing: border-box;
     font-size: 14px;
 }
 
-.form button {
+.container-form input {
+    background: #f2f2f2;
+}
+
+.container-form button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -66,29 +64,28 @@ body {
     color: #fff;
     font-size: 14px;
     cursor: pointer;
-    /* margin-left: 200px; */
 }
 
-.form button:hover,
-.form button:active,
-.form button:focus {
+.container-form button:hover,
+.container-form button:active,
+.container-form button:focus {
     background: #00477B;
 }
 
-.form .message {
+.container-form .message {
     margin: 15px 0 0;
     color: #DCDCDC;
     font-size: 14px;
 }
 
-.form .message a {
+.container-form .message a {
     color: #65D2D2;
     text-decoration: none;
     font-size: 13px;
     font-weight: bold;
 }
 
-.form .message a:hover {
+.container-form .message a:hover {
     text-decoration: underline;
 }
 

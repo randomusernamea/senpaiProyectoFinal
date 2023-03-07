@@ -119,7 +119,7 @@ function PokemonFormComp(params) {
 
   return (
     <div className="register-page">
-      <div className="form">
+      <div className="container-form">
         <form onSubmit={onSubmitPkmn} className="register-form">
           <label for="id">id:</label>
           <input type="text" id="id" name="id" onChange={onChangeValueId} value={id} />
@@ -143,22 +143,22 @@ function PokemonFormComp(params) {
           <input type="text" id="Abilities" name="Abilities" onChange={onChangeValueAbilities} value={abilities} /><br />
           <label for="HP">HP:</label>
           <input type="text" id="HP" name="HP" onChange={onChangeValueHp} value={hp} />
-          <label for="atk">atk:</label>
+          <label for="atk">ATK:</label>
           <input type="text" id="atk" name="atk" onChange={onChangeValueAtk} value={atk} />
-          <label for="def">def:</label>
+          <label for="def">DEF:</label>
           <input type="text" id="def" name="def" onChange={onChangeValueDef} value={def} />
-          <label for="satk">satk:</label>
+          <label for="satk">SATK:</label>
           <input type="text" id="satk" name="satk" onChange={onChangeValueSatk} value={satk} />
-          <label for="sdef">setDef:</label>
+          <label for="sdef">SDEF:</label>
           <input type="text" id="sdef" name="sdef" onChange={onChangeValueSdef} value={sdef} />
-          <label for="spd">spd:</label>
+          <label for="spd">SPD:</label>
           <input type="text" id="spd" name="spd" onChange={onChangeValueSpd} value={spd} />
           <label for="Descripcion">Descripcion:</label>
           <input type="text" id="Descripcion" name="Descripcion" onChange={onChangeValueDescripcion} value={descripcion} /><br />
           <button id="crearBtn" type="submit">
             Enviar datos
           </button>
-          <p>{texto}</p>
+          <p className="container">{texto}</p>
         </form>
       </div>
     </div>
