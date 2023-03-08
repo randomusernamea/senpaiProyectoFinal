@@ -19,34 +19,12 @@ function Pokedex() {
     });
   }, []);
 
-  // const consultarPokemons = () => {
-  //   fetch("http://localhost:3000/pokemons", idPokemons, {
-  //     method: "GET",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //       return Promise.reject(response);
-  //     })
-  //     .then((data) => {
-  //       setPokemons(data);
-  //       setPokemonsOrdered(data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.statusText);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   consultarPokemons();
-  // }, []);
-
   function changeSorting(param) {
     setSorting(param);
     let a = sortPokes(pokemonsOrdered, param);
     setPokemonsOrdered(a);
   }
+
   function sortPokes(a, sortOrder) {
     a.sort((a, b) => {
       if (sortOrder === true) {
