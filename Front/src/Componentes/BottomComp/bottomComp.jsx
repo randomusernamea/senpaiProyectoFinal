@@ -20,7 +20,7 @@ function BottomComp(props) {
         }); */
         localStorage.setHeader("Authorization", null);
         setIsLogged(false);
-        navigate("/home");
+        navigate("/");
       });
     } catch (e) {
       const error = new Error("Something went wrong");
