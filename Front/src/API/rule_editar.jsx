@@ -6,6 +6,6 @@ export const editarPokemon = (form) => {
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
+      return (error)
     });
 };
