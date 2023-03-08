@@ -16,6 +16,27 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.479), 0 5px 5px 0 rgba(0, 0, 0, 0.308);
 }
 
+#btn-neon {
+    border-radius: 30px;
+    margin-top: 5px;
+    background-color: #e2e839;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    letter-spacing: 4px;
+    text-decoration: none;
+
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+#btn-neon:hover {
+    background: #c03232;
+    box-shadow: 0 0 10px #c03232, 0 0 40px #c03232, 0 0 80px #c03232;
+    transition-delay: 0.2s;
+}
+
 .group {
     position: relative;
 }

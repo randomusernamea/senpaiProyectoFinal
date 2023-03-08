@@ -1,40 +1,130 @@
-.HomePageBackground {
-    height: 100vh;
-    background-image: url("../../../public/images/pokemonWallpaper2.jpg");
-}
-.HomeLogin {
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.HomePageForm{
-    background-repeat: no-repeat;
-    height: 20%;
-    width: 50%;
-    border-radius: 10px;
-    background-image: url("../../../public/images/wallpaperPokemon.jpg");
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c4c3ca;
+    background-color: #1f2029;
+    overflow-x: hidden;
 }
 
-#btn-neon{
-    border-radius: 30px;
-    margin-top: 5px;
-    background-color: #e2e839;
+h6 span {
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #c4c3ca;
+    font-size: 1.5rem;
+}
+
+.section {
     position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    letter-spacing: 4px;
-    text-decoration: none;
-    
-    overflow: hidden;
-    transition: 0.2s;
+    width: 100%;
+    display: block;
 }
-#btn-neon:hover{
-    background: #c03232;
-    box-shadow: 0 0 10px #c03232, 0 0 40px #c03232, 0 0 80px #c03232;
-    transition-delay: 0.2s;
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
 }
+
+.checkbox:checked+label,
+.checkbox:not(:checked)+label {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 60px;
+    height: 16px;
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    background-color: #e8e6de;
+}
+
+.checkbox:checked+label:before,
+.checkbox:not(:checked)+label:before {
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #e8e6de;
+    background-color: #1b264e;
+    font-family: 'unicons';
+    content: '\eb4f';
+    z-index: 20;
+    top: -10px;
+    left: -10px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px;
+    transition: all 0.5s ease;
+}
+
+.checkbox:checked+label:before {
+    transform: translateX(44px) rotate(-270deg);
+}
+
+
+.card-3d-wrap {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 400px;
+    transform-style: preserve-3d;
+    perspective: -800px;
+    margin-top: 60px;
+}
+
+.card-3d-wrapper {
+    width: 100%;
+    /* height: 80vh; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out;
+}
+
+.card-front,
+.card-back {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    /* left: -50%;
+    top: -50%; */
+    /* transform-style: preserve-3d; */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, -50%) perspective(100px);
+    z-index: 20;
+
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
+    transform: rotateY(180deg);
+}
+
+/* .center-wrap {
+    position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    z-index: 20;
+    display: block;
+} */

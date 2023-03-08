@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { eliminarPokemon } from "../../API/rule_eliminar";
-import {getPokemonById} from "../../API/rule_info";
-import {numeroATipo} from "../../Utilities/utilities"
+import { getPokemonById } from "../../API/rule_info";
+import { numeroATipo } from "../../Utilities/utilities"
 
 function BigCard() {
   const { idPokemons } = useParams();
@@ -37,12 +37,12 @@ function BigCard() {
   useEffect(() => {
     getPokemonById(idPokemons).then((data) => {
       //Convierte los stats a string porque despues se les hace concat que es una funcion de String
-      data[0].stats = {hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd)}
+      data[0].stats = { hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd) }
       data[0].tipo1 = numeroATipo(data[0].tipo_id[0])
       data[0].tipo2 = numeroATipo(data[0].tipo_id[1])
       console.log(data[0])
-      data[0].height = String(data[0].altura).replace(".",",") + "m"
-      data[0].weight = String(data[0].peso).replace(".",",") + "kg"
+      data[0].height = String(data[0].altura).replace(".", ",") + "m"
+      data[0].weight = String(data[0].peso).replace(".", ",") + "kg"
       delete data[0]["altura"]
       delete data[0]["peso"]
       delete data[0]["hp"]
@@ -101,7 +101,7 @@ function BigCard() {
             to={`/pokemons/${getPrevious(poke.id)}`}
           ></Link>
         )}
-        <img src={"http://" + poke.foto} id="bigCardPokeImg" alt={poke.nombre}/>
+        <img src={"http://" + poke.foto} id="bigCardPokeImg" alt={poke.nombre} />
         {getNext(poke.id) !== "000" && (
           <Link
             id="bigCardArrowRight"
@@ -112,13 +112,13 @@ function BigCard() {
       </div>
 
       <div id="bigCardBottomDiv">
-        <div id="bigCardEvosDiv">
+        {/*<div id="bigCardEvosDiv">
           <p
             className="bigCardPAbout"
             style={{ color: tipoAcolor(poke.tipo1) }}
             id="bigCardPAbout"
           >
-            Evoluciones
+             Evoluciones 
           </p>
           {(poke.stage1 || poke.stage2 || poke.stage3) && (
             <div id="bigCardPEvos">
@@ -147,8 +147,8 @@ function BigCard() {
                 />
               )}
             </div>
-          )}
-        </div>
+          )} 
+        </div>*/}
         <div id="bigCardTipos">
           <p
             className="tipo"

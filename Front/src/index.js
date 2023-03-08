@@ -10,16 +10,17 @@ import ErrorComp from "./Componentes/ErrorComp/ErrorComp"
 import Login from "./Componentes/Login/Login"
 import Registrar from "./Componentes/Register/Register"
 import PokemonFormComp from "./Componentes/PokemonFormComp/PokemonFormComp"
+import Home from "./Componentes/HomePage/Home"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Pokedex />,
   },
-  // {
-  //   path: "pokedex",
-  //   element: <Pokedex />,
-  // },
+  {
+    path: "home",
+    element: <Home />,
+  },
   {
     path: "pokemons/:idPokemons",
     element: <BigCard />,
@@ -30,19 +31,19 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <Login/>,
+    element: <Login />,
   },
   {
-    path: "registrar", 
-    element: <Registrar/>,
+    path: "registrar",
+    element: <Registrar />,
   },
   {
     path: "agregar",
-    element: <PokemonFormComp tarea="agregar"/>
+    element: <PokemonFormComp tarea="agregar" />
   },
   {
     path: "editar",
-    element: <PokemonFormComp tarea="editar/:id:"/>
+    element: <PokemonFormComp tarea="editar/:id:" />
   }
 
 ]);
