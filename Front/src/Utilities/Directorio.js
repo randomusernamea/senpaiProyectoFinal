@@ -1,3 +1,3 @@
 export const directorio = () => {
-    return "C:/Users/Pablo/Desktop/SAP/Proyecto Final/SenpaiProyectoFinalBackend"
-}
+  return "C:/Users/Usuario/Desktop/Senpai/febrero/proyectoFinal/SenpaiProyectoFinalBackend";
+};
