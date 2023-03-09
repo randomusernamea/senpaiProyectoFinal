@@ -12,8 +12,7 @@ export const loguearUsuario = async (form) => {
 };
 
 export const logout = async () => {
-  const DELETE_URL = "/logout";
-  return await API.delete(DELETE_URL)
+  return await API.post("/logout")
     .then((response) => {
       localStorage.setItem("token", response.data.token);
       return response.data;
