@@ -12,17 +12,17 @@ function BottomComp(props) {
   const onSubmitLogout = async (e) => {
     e.preventDefault()
     try {
-      logout().then(() => {
-        localStorage.setHeader('Authorization', `Bearer ${JSON.parse(localStorage.getItem("currentUser")).token}`);
-        localStorage.clear();
-        /* context.commit("setUser", {
-          token: null,
-          userId: null,
-        }); */
-        localStorage.setHeader('Authorization', null);
-        setIsLogged(false);
-        navigate("/")
-      })
+      //logout().then((response) => {
+      //localStorage.setHeader('JSONToken', `Bearer ${JSON.parse(localStorage.getItem("currentUser")).token}`);
+      //localStorage.clear();
+      /* context.commit("setUser", {
+      token: null,
+      userId: null, */
+      localStorage.removeItem('JSONToken');
+      //});
+      setIsLogged(false);
+      navigate("/")
+      /* }) */
     } catch (e) {
       const error = new Error("Something went wrong");
       throw error;
@@ -57,7 +57,7 @@ function BottomComp(props) {
         {isLogged ?
           (
             < button onClick={onSubmitLogout} className="btnBottomComp">Cerrar sesión</button>
-          ) : (null)
+          ) : (<label>Inicia Sesion</label>)
         }
       </div>
     </div>
