@@ -60,16 +60,8 @@ function Pokedex() {
   return (
     <div id="pokedex">
       <h3>ESTAS EN POKEDEX</h3>
-      <TopComp
-        id="topComp"
-        setOrderFilter={setPokemonsOrdered}
-        sortAndFilter={sortAndFilterPokemon}
-        pokemonsOrdered={pokemonsOrdered}
-        sorting={sorting}
-        changeSorting={changeSorting}
-        search={search}
-        changeSearch={setSearch}
-      />
+
+      <TopComp id="topComp" setOrderFilter={setPokemonsOrdered} sortAndFilter={sortAndFilterPokemon} pokemonsOrdered={pokemonsOrdered} sorting={sorting} changeSorting={changeSorting} search={search} changeSearch={setSearch} />
       <BottomComp pokemones={pokemonsOrdered} />
     </div>
   );
