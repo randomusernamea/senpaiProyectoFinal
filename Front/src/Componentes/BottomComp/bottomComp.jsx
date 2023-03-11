@@ -17,13 +17,13 @@ function BottomComp(props) {
       /* context.commit("setUser", {
       token: null,
       userId: null, */
-      localStorage.removeItem('JSONToken');
+      localStorage.removeItem("JSONToken");
       //});
       setIsLogged(false);
-      navigate("/")
+      navigate("/login");
       /* }) */
     } catch (e) {
-      const error = new Error("Something went wrong");
+      const error = new Error("Error logging out");
       throw error;
     }
   };
@@ -43,11 +43,13 @@ function BottomComp(props) {
         </Link>
       </div>
       <div className="btnCointainerBottomComp">
-        {isLogged ?
-          (
-            < button onClick={onSubmitLogout} className="btnBottomComp">Cerrar sesión</button>
-          ) : (<label>Inicia Sesion</label>)
-        }
+        {isLogged ? (
+          <button onClick={onSubmitLogout} className="btnBottomComp">
+            Cerrar sesión
+          </button>
+        ) : (
+          <label>Inicia Sesion</label>
+        )}
       </div>
     </div>
   );
