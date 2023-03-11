@@ -26,8 +26,10 @@ function Pokedex() {
   }
 
   function sortPokes(a, sortOrder) {
+    //Ordena por numero de id o por nombre dependiendo de si sortorder es true o false
     a.sort((a, b) => {
       if (sortOrder === true) {
+        //Sort por nombre
         if (a.nombre > b.nombre) {
           return 1;
         }
@@ -37,6 +39,7 @@ function Pokedex() {
         return -1;
       }
       if (sortOrder === false) {
+        //Sort por id
         if (a.id > b.id) {
           return 1;
         }
@@ -51,6 +54,7 @@ function Pokedex() {
   }
   function sortAndFilterPokemon(search) {
     let a = [];
+    //Solo los pokemones que contienen en el nombre el string search
     a = pokemons.filter((poke) => {
       return poke.nombre.toLowerCase().includes(search.toLowerCase());
     });

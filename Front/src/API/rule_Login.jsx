@@ -14,6 +14,7 @@ export const loguearUsuario = async (form) => {
 export const logout = async () => {
   return await API.post("/logout")
     .then((response) => {
+      //Borro el token de localstorage
       localStorage.setItem("token", response.data.token);
       return response.data;
     })

@@ -4,6 +4,7 @@ import img from "./Imgs/Pokeball.png";
 
 function TopComp(params) {
   const inputChange = (e) => {
+    //Al hacer click cambia el orden de por id a alfabtico o viceversa
     params.changeSearch(e.target.value);
     let a = params.sortAndFilter(e.target.value);
     params.setOrderFilter(a);
