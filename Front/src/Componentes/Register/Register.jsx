@@ -24,12 +24,15 @@ function Registrar() {
   const onSubmitSesion = async (e) => {
     e.preventDefault()
     const user = { nombre: nombre, correo: usuario, clave: clave, permisos: 1 }
+    //Mando un request de registrar al back
     registrarUsuario(user).then((response) => {
       console.log(response instanceof Error)
       if (!(response instanceof Error)){
+        //Si no falla mando el usuario a loguearse
         navigate("/Login")
       }
       else {
+        //Si falla setel el mensaje de porque falla
         setMensajeError(response.message)
       } 
     })

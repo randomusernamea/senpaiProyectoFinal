@@ -19,6 +19,7 @@ function Login() {
     e.preventDefault()
     const user = { correo: usuario, clave: clave }
     loguearUsuario(user).then((response) => {
+      //Guardo el token en localstorage
       localStorage.setItem("JSONToken", response.token)
       navigate("/")
     })

@@ -47,11 +47,15 @@ function BigCard() {
     getPokemonById(idPokemons).then((data) => {
       if (data[0]){
         //Convierte los stats a string porque despues se les hace concat que es una funcion de String
+        //Pone ciertos datos en un JSON interno llamado stats
         data[0].stats = { hp: String(data[0].hp), atk: String(data[0].atk), def: String(data[0].def), satk: String(data[0].satk), sdef: String(data[0].sdef), spd: String(data[0].spd) };
+        //Los tipos vienen como un numero del backend, los convierte a un string usable
         data[0].tipo1 = numeroATipo(data[0].tipo_id[0]);
         data[0].tipo2 = numeroATipo(data[0].tipo_id[1]);
+        //Convierte los numeros que vienen a el formato usado en el front, les agrega la unidad
         data[0].height = String(data[0].altura).replace(".", ",") + "m";
         data[0].weight = String(data[0].peso).replace(".", ",") + "kg";
+        //Borro los datos no usados
         delete data[0]["altura"];
         delete data[0]["peso"];
         delete data[0]["hp"];
@@ -60,14 +64,18 @@ function BigCard() {
         delete data[0]["sdef"];
         delete data[0]["satk"];
         delete data[0]["spd"];
+        //Pongo las habilidades que vienen en un array en donde usa el front
         data[0].ability1 = data[0].habilidad[0];
         if (data[0].habilidad[1]) {
           data[0].ability2 = data[0].habilidad[1];
         }
         delete data[0]["habilidad"];
+        //Guardo el pokemon
         setPoke(data[0]);
         getPokemones().then((dato) => {
+          //Traigo la lista de pokemones para las flechas de anterior y siguiente
           setPokemones(dato);
+          //Asigno a indice actual en donde esta el pokemon actual en la lista de pokemones
           indiceActual(data[0], dato);
         });
       }
@@ -79,11 +87,14 @@ function BigCard() {
   }, []);
 
   const indiceActual = (pokemon, listaPokemones) => {
+    //Busca el pokemon en la lista de pokemones por id
     setIndice(listaPokemones.findIndex((po) => po.id === pokemon.id));
   };
 
   function deletePokemon() {
+    //Manda un request a la base de datos para borrar el pokemon
     eliminarPokemon(poke.id).then(function (response) {
+      //Asigno MissingNo al borrar el pokemon, indicando que se borro
       setPoke({
         id: "003",
         nombre: "MissingNo",

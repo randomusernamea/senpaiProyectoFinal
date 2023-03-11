@@ -1,4 +1,5 @@
 export const tipoAcolor = (tipo) => {
+  //Convierte un tipo a un RBG usable para el css
   switch (tipo) {
     case "Normal":
       return "#AAA67f";
@@ -40,7 +41,7 @@ export const tipoAcolor = (tipo) => {
       return "#666666";
   }
 };
-
+//No se usa
 export const getPrevious = (id) => {
   switch (id) {
     case "001":
@@ -77,7 +78,7 @@ export const getPrevious = (id) => {
       return "000";
     }
 };
-
+//No se usa
 export const getNext = (id) => {
   switch (id) {
     case "001":
@@ -116,6 +117,7 @@ export const getNext = (id) => {
 };
 
 export const numeroATipo = (numero) => {
+  //Convierte un numero de la base de datos a un tipo usable por el front
   switch(numero){
     case 1:
       return "Normal";
